@@ -51,16 +51,16 @@
     <div class="lpListBody">
         <div v-if="isListNew" id="getStarted">
             <h2>Bienvenido a MuyLigero.</h2>
-            <p>Here's what you need to get started:</p>
+            <p>Esto es lo que necesitas para empezar:</p>
             <ol>
-                <li>Click on things to edit them. Give your list and category a name.</li>
-                <li>Add new categories and give items weights to start the visualization.</li>
+                <li>Haz clic en los elementos para editarlos. Pon nombre a tu lista y a cada categoria.</li>
+                <li>Anade categorias nuevas y asigna peso a los articulos para empezar a ver el resumen.</li>
                 <li v-if="!isLocalSaving">
-                    When you're done, share your list with others!
+                    Cuando termines, comparte tu lista con otras personas.
                 </li>
             </ol>
             <p v-if="isLocalSaving" class="lpWarning">
-                <strong>Nota:</strong> Tus datos se están guardando en tu ordenador. Para compartir tus listas, crea una cuenta.
+                <strong>Nota:</strong> Tus datos se estan guardando en tu ordenador. Para compartir tus listas, crea una cuenta.
             </p>
         </div>
         <list-summary v-if="!isListNew" :list="list" />
@@ -69,7 +69,7 @@
         <div style="clear: both;" />
 
         <div v-if="library.optionalFields['listDescription']" id="listDescriptionContainer">
-            <h3>List Description</h3> <p>(<a href="https://guides.github.com/features/mastering-markdown/" target="_blank" class="lpHref">Markdown</a> supported)</p>
+            <h3>Descripcion de la lista</h3> <p>(<a href="https://guides.github.com/features/mastering-markdown/" target="_blank" class="lpHref">Markdown</a> compatible)</p>
             <textarea id="listDescription" v-model="list.description" @input="updateListDescription" />
         </div>
 
@@ -79,7 +79,7 @@
 
         <hr>
 
-        <a class="lpAdd addCategory" @click="newCategory"><i class="lpSprite lpSpriteAdd" />Add new category</a>
+        <a class="lpAdd addCategory" @click="newCategory"><i class="lpSprite lpSpriteAdd" />Nueva categoria</a>
     </div>
 </template>
 

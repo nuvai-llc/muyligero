@@ -18,13 +18,13 @@
                 <li class="lpRow lpHeader">
                     <span class="lpCell">&nbsp;</span>
                     <span class="lpCell">
-                        Category
+                        Categoria
                     </span>
                     <span v-if="library.optionalFields['price']" class="lpCell">
-                        Price
+                        Precio
                     </span>
                     <span class="lpCell">
-                        Weight
+                        Peso
                     </span>
                 </li>
                 <li v-for="category in categories" :key="category.id" :class="{'hover': category.activeHover, 'lpTotalCategory lpRow': true}">
@@ -59,7 +59,7 @@
                 <li v-if="list.totalConsumableWeight" data-weight-type="consumable" class="lpRow lpFooter lpBreakdown lpConsumableWeight">
                     <span class="lpCell" />
                     <span class="lpCell lpSubtotal">
-                        Consumable
+                        Consumible
                     </span>
                     <span v-if="library.optionalFields['price']" class="lpCell lpNumber lpSubtotal">
                         {{ list.totalConsumablePrice | displayPrice(library.currencySymbol) }}
@@ -72,7 +72,7 @@
                 <li v-if="list.totalWornWeight" data-weight-type="worn" class="lpRow lpFooter lpBreakdown lpWornWeight">
                     <span class="lpCell" />
                     <span class="lpCell lpSubtotal">
-                        Worn
+                        Puesto
                     </span>
                     <span v-if="library.optionalFields['price']" class="lpCell lpNumber" />
                     <span class="lpCell lpNumber lpSubtotal">
@@ -82,12 +82,12 @@
                 </li>
                 <li v-if="list.totalWornWeight || list.totalConsumableWeight" data-weight-type="base" class="lpRow lpFooter lpBreakdown lpBaseWeight">
                     <span class="lpCell" />
-                    <span class="lpCell lpSubtotal" :title="$options.filters.displayWeight(list.totalPackWeight, library.totalUnit) + ' ' + library.totalUnit + ' pack weight (consumable + base weight)'">
-                        Base Weight
+                    <span class="lpCell lpSubtotal" :title="$options.filters.displayWeight(list.totalPackWeight, library.totalUnit) + ' ' + library.totalUnit + ' peso de la mochila (consumible + peso base)'">
+                        Peso base
                     </span>
                     <span v-if="library.optionalFields['price']" class="lpCell lpNumber" />
                     <span class="lpCell lpNumber lpSubtotal">
-                        <span class="lpDisplaySubtotal" :mg="list.totalBaseWeight" :title="$options.filters.displayWeight(list.totalPackWeight, library.totalUnit) + ' ' + library.totalUnit + ' pack weight (consumable + base weight)'">
+                        <span class="lpDisplaySubtotal" :mg="list.totalBaseWeight" :title="$options.filters.displayWeight(list.totalPackWeight, library.totalUnit) + ' ' + library.totalUnit + ' peso de la mochila (consumible + peso base)'">
                             {{ list.totalBaseWeight | displayWeight(library.totalUnit) }}
                         </span>
                         <span class="lpSubtotalUnit">{{ library.totalUnit }}</span>

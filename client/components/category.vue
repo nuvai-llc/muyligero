@@ -15,18 +15,18 @@
         <ul class="lpItems lpDataTable">
             <li class="lpHeader lpItemsHeader">
                 <span class="lpHandleCell">
-                    <div class="lpHandle lpCategoryHandle" title="Reorder this category" />
+                    <div class="lpHandle lpCategoryHandle" title="Reordenar esta categoria" />
                 </span>
-                <input v-focus-on-create="category._isNew" type="text" :value="category.name" placeholder="Category Name" class="lpCategoryName lpSilent" @input="updateCategoryName">
-                <span v-if="library.optionalFields['price']" class="lpPriceCell">Price</span>
-                <span class="lpWeightCell">Weight</span>
-                <span class="lpQtyCell">qty</span>
-                <span class="lpRemoveCell"><a class="lpRemove lpRemoveCategory" title="Remove this category" @click="removeCategory(category)"><i class="lpSprite lpSpriteRemove" /></a></span>
+                <input v-focus-on-create="category._isNew" type="text" :value="category.name" placeholder="Nombre de la categoria" class="lpCategoryName lpSilent" @input="updateCategoryName">
+                <span v-if="library.optionalFields['price']" class="lpPriceCell">Precio</span>
+                <span class="lpWeightCell">Peso</span>
+                <span class="lpQtyCell">cant.</span>
+                <span class="lpRemoveCell"><a class="lpRemove lpRemoveCategory" title="Eliminar esta categoria" @click="removeCategory(category)"><i class="lpSprite lpSpriteRemove" /></a></span>
             </li>
             <item v-for="itemContainer in itemContainers" :key="itemContainer.item.id" :item-container="itemContainer" :category="category" />
             <li class="lpFooter lpItemsFooter">
                 <span class="lpAddItemCell">
-                    <a class="lpAdd lpAddItem" @click="newItem"><i class="lpSprite lpSpriteAdd" />Add new item</a>
+                    <a class="lpAdd lpAddItem" @click="newItem"><i class="lpSprite lpSpriteAdd" />Nuevo articulo</a>
                 </span>
                 <span v-if="library.optionalFields['price']" class="lpPriceCell lpNumber lpSubtotal">
                     {{ category.subtotalPrice | displayPrice(library.currencySymbol) }}
@@ -76,7 +76,7 @@ export default {
                 this.$store.commit('removeCategory', category);
             };
             const speedbumpOptions = {
-                body: 'Are you sure you want to delete this category? This cannot be undone.',
+                body: 'Estas seguro de que quieres eliminar esta categoria? Esta accion no se puede deshacer.',
             };
             bus.$emit('initSpeedbump', callback, speedbumpOptions);
         },

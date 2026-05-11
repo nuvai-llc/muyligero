@@ -7,30 +7,30 @@
         <modal id="itemImageDialog" :shown="shown" @hide="shown = false">
             <div class="columns">
                 <div class="lpHalf">
-                    <h2>Add image by URL</h2>
+                    <h2>Anadir imagen por URL</h2>
                     <form id="itemImageUrlForm" @submit.prevent="saveImageUrl()">
-                        <input id="itemImageUrl" v-model="imageUrl" type="text" placeholder="Image URL">
-                        <input type="submit" class="lpButton" value="Save">
-                        <a class="lpHref close" @click="shown = false">Cancel</a>
+                        <input id="itemImageUrl" v-model="imageUrl" type="text" placeholder="URL de la imagen">
+                        <input type="submit" class="lpButton" value="Guardar">
+                        <a class="lpHref close" @click="shown = false">Cancelar</a>
                     </form>
                 </div>
                 <div class="lpHalf">
-                    <h2>Upload image from disk</h2>
+                    <h2>Subir imagen desde el ordenador</h2>
                     <template v-if="!item.image">
                         <p class="imageUploadDescription">
-                            Your image will be hosted on imgur.
+                            Tu imagen se alojara en imgur.
                         </p>
                         <button id="itemImageUpload" class="lpButton" @click="triggerImageUpload">
-                            Upload Image
+                            Subir imagen
                         </button>
-                        <a class="lpHref close" @click="shown = false">Cancel</a>
+                        <a class="lpHref close" @click="shown = false">Cancelar</a>
                         <p v-if="uploading">
-                            Uploading image...
+                            Subiendo imagen...
                         </p>
                     </template>
                     <template v-if="item.image">
                         <button id="itemImageUpload" class="lpButton" @click="removeItemImage">
-                            Remove Image
+                            Eliminar imagen
                         </button>
                     </template>
                 </div>
@@ -75,7 +75,7 @@ export default {
         },
         uploadImage(evt) {
             if (!FormData) {
-                alert('Your browser is not supported for file uploads. Please update to a more modern browser.');
+                alert('Tu navegador no es compatible con la subida de archivos. Actualizalo e intentalo de nuevo.');
                 return;
             }
             const file = evt.target.files[0];
@@ -87,11 +87,11 @@ export default {
                 return;
             }
             if (size > 2500000) {
-                alert('Please upload a file less than 2.5mb');
+                alert('Sube un archivo de menos de 2.5 MB.');
                 return;
             }
             if (type != 'image/png' && type != 'image/jpg' && !type != 'image/gif' && type != 'image/jpeg') {
-                alert('File doesnt match png, jpg or gif.');
+                alert('El archivo debe ser PNG, JPG o GIF.');
                 return;
             }
             const formData = new FormData(this.$refs.imageUploadForm);
@@ -109,7 +109,7 @@ export default {
                     this.shown = false;
                 }).catch((response) => {
                     this.uploading = false;
-                    alert('Upload failed! If this issue persists please file a bug.');
+                    alert('La subida ha fallado. Si el problema continua, avisanos.');
                 });
         },
         removeItemImage() {

@@ -12,14 +12,14 @@
             <div class="columns">
                 <div class="lpHalf">
                     <h3>
-                        Forgot Your Password?
+                        Has olvidado tu contrasena?
                     </h3>
 
-                    <p>Please enter your username.</p>
+                    <p>Introduce tu nombre de usuario.</p>
                     <form class="forgotPassword" @submit.prevent="resetPassword">
                         <div class="lpFields">
-                            <input v-model="forgotPasswordUsername" type="text" placeholder="Username" name="username" class="username">
-                            <input type="submit" value="Submit" class="lpButton">
+                            <input v-model="forgotPasswordUsername" type="text" placeholder="Usuario" name="username" class="username">
+                            <input type="submit" value="Enviar" class="lpButton">
                         </div>
 
                         <errors :errors="forgotPasswordErrors" />
@@ -27,21 +27,21 @@
                 </div>
                 <div class="lpHalf">
                     <h3>
-                        Forgot Your Username?
+                        Has olvidado tu usuario?
                     </h3>
 
-                    <p>Please enter your email address.</p>
+                    <p>Introduce tu direccion de email.</p>
                     <form class="forgotUsername" @submit.prevent="forgotUsername">
                         <div class="lpFields">
-                            <input v-model="forgotUsernameEmail" type="text" placeholder="Email Address" name="email" class="email">
-                            <input type="submit" value="Submit" class="lpButton">
+                            <input v-model="forgotUsernameEmail" type="text" placeholder="Direccion de email" name="email" class="email">
+                            <input type="submit" value="Enviar" class="lpButton">
                         </div>
 
                         <errors :errors="forgotUsernameErrors" />
                     </form>
                 </div>
                 <router-link to="/signin" class="lpHref">
-                    &larr; Return to sign in
+                    &larr; Volver al inicio de sesion
                 </router-link>
             </div>
         </modal>
@@ -85,7 +85,7 @@ export default {
                     router.push('/signin/reset-password');
                 })
                 .catch((response) => {
-                    let errors = [{ message: 'An error occurred, please try again later.' }];
+                    let errors = [{ message: 'Ha ocurrido un error. Intentalo de nuevo mas tarde.' }];
                     if (response.json && response.json.errors) {
                         errors = response.json.errors;
                     }
@@ -107,7 +107,7 @@ export default {
                     router.push('/signin/forgot-username');
                 })
                 .catch((response) => {
-                    let errors = [{ message: 'An error occurred, please try again later.' }];
+                    let errors = [{ message: 'Ha ocurrido un error. Intentalo de nuevo mas tarde.' }];
                     if (response.json && response.json.errors) {
                         errors = response.json.errors;
                     }

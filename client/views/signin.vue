@@ -7,10 +7,10 @@
         <modal id="signin" :shown="true" :blackout="true">
             <div class="lpModalHeader">
                 <h2>
-                    Sign in
+                    Iniciar sesion
                 </h2>
                 <router-link to="/register" class="lpHref">
-                    Need to register?
+                    Necesitas registrarte?
                 </router-link>
             </div>
             <SigninForm :message="message" />
@@ -38,7 +38,7 @@ export default {
     computed: {
         message() {
             if (this.$route.path.indexOf('/reset-password') > -1 || this.$route.path.indexOf('/forgot-username') > -1) {
-                return 'An email has been sent to the address associated with your MuyLigero account. Note: emails to yahoo.com addresses are currently being blocked. Please reach out to info@lighterpack.com for assistance if you do not receive your email.';
+                return 'Hemos enviado un email a la direccion asociada a tu cuenta de MuyLigero. Nota: los correos a direcciones yahoo.com pueden fallar. Escribe a info@lighterpack.com si no recibes el mensaje.';
             }
             return '';
         },

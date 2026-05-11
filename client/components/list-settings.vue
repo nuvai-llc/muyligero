@@ -36,7 +36,7 @@
 <template>
     <span v-if="isSignedIn" id="settings" class="headerItem hasPopover">
         <PopoverHover>
-            <span slot="target"><i class="lpSprite lpSettings" /> Settings</span>
+            <span slot="target"><i class="lpSprite lpSettings" /> Ajustes</span>
             <div slot="content">
                 <ul id="lpOptionalFields">
                     <li v-for="optionalField in optionalFieldsLookup" :key="optionalField.name" class="lpOptionalField">
@@ -49,7 +49,7 @@
                 <div v-if="library.optionalFields['price']" id="lpPriceSettings">
                     <hr>
                     <label>
-                        Currency:
+                        Moneda:
                         <input id="currencySymbol" type="text" maxlength="4" :value="library.currencySymbol" @input="updateCurrencySymbol($event)">
                     </label>
                 </div>
@@ -70,27 +70,27 @@ export default {
         return {
             optionalFieldsLookup: [{
                 name: 'images',
-                displayName: 'Item images',
+                displayName: 'Imagenes de articulos',
                 cssClass: 'lpShowImages',
                 value: false,
             }, {
                 name: 'price',
-                displayName: 'Item prices',
+                displayName: 'Precios de articulos',
                 cssClass: 'lpShowPrices',
                 value: false,
             }, {
                 name: 'worn',
-                displayName: 'Worn items',
+                displayName: 'Articulos puestos',
                 cssClass: 'lpShowWorn',
                 value: false,
             }, {
                 name: 'consumable',
-                displayName: 'Consumable items',
+                displayName: 'Articulos consumibles',
                 cssClass: 'lpShowConsumable',
                 value: false,
             }, {
                 name: 'listDescription',
-                displayName: 'List descriptions',
+                displayName: 'Descripciones de listas',
                 cssClass: 'lpShowListDescription',
                 value: false,
             }],

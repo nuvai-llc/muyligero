@@ -90,23 +90,23 @@
 <template>
     <section id="listContainer">
         <div class="listContainerHeader">
-            <h2>Lists</h2>
+            <h2>Listas</h2>
             <PopoverHover id="addListFlyout">
-                <span slot="target"><a class="lpAdd" @click="newList"><i class="lpSprite lpSpriteAdd" />Add new list</a></span>
+                <span slot="target"><a class="lpAdd" @click="newList"><i class="lpSprite lpSpriteAdd" />Nueva lista</a></span>
                 <div slot="content">
-                    <a class="lpAdd" @click="newList"><i class="lpSprite lpSpriteAdd" />Add new list</a>
-                    <a class="lpAdd" @click="importCSV"><i class="lpSprite lpSpriteUpload" />Import CSV</a>
-                    <a class="lpCopy" @click="copyList"><i class="lpSprite lpSpriteCopy" />Copy a list</a>
+                    <a class="lpAdd" @click="newList"><i class="lpSprite lpSpriteAdd" />Nueva lista</a>
+                    <a class="lpAdd" @click="importCSV"><i class="lpSprite lpSpriteUpload" />Importar CSV</a>
+                    <a class="lpCopy" @click="copyList"><i class="lpSprite lpSpriteCopy" />Copiar una lista</a>
                 </div>
             </PopoverHover>
         </div>
         <ul id="lists">
             <li v-for="list in library.lists" :key="list.id" class="lpLibraryList" :class="{lpActive: (library.defaultListId == list.id)}">
-                <div class="lpHandle" title="Reorder this item" />
+                <div class="lpHandle" title="Reordenar esta lista" />
                 <span class="lpLibraryListSwitch lpListName" @click="setDefaultList(list)">
                     {{ list | listName }}
                 </span>
-                <a class="lpRemove" title="Remove this list" @click="removeList(list)"><i class="lpSprite lpSpriteRemove" /></a>
+                <a class="lpRemove" title="Eliminar esta lista" @click="removeList(list)"><i class="lpSprite lpSpriteRemove" /></a>
             </li>
         </ul>
     </section>
@@ -124,7 +124,7 @@ export default {
     },
     filters: {
         listName(list) {
-            return list.name || 'New list';
+            return list.name || 'Nueva lista';
         },
     },
     props: ['list'],
@@ -169,7 +169,7 @@ export default {
                 this.$store.commit('removeList', list);
             };
             const speedbumpOptions = {
-                body: 'Are you sure you want to delete this list? This cannot be undone.',
+                body: 'Estas seguro de que quieres eliminar esta lista? Esta accion no se puede deshacer.',
             };
             bus.$emit('initSpeedbump', callback, speedbumpOptions);
         },

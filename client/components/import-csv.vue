@@ -15,16 +15,16 @@
 <template>
     <div id="importCSV">
         <modal id="importValidate" :shown="shown" @hide="shown = false">
-            <h2>Confirm your import</h2>
+            <h2>Confirma la importacion</h2>
             <div id="importData">
                 <ul class="lpTable lpDataTable">
                     <li class="lpRow lpHeader">
-                        <span class="lpCell">Item Name</span>
-                        <span class="lpCell">Category</span>
-                        <span class="lpCell">Description</span>
-                        <span class="lpCell">Qty</span>
-                        <span class="lpCell">Weight</span>
-                        <span class="lpCell">Unit</span>
+                        <span class="lpCell">Articulo</span>
+                        <span class="lpCell">Categoria</span>
+                        <span class="lpCell">Descripcion</span>
+                        <span class="lpCell">Cant.</span>
+                        <span class="lpCell">Peso</span>
+                        <span class="lpCell">Unidad</span>
                     </li>
                     <li v-for="row in importData.data" class="lpRow">
                         <span class="lpCell">{{ row.name }}</span>
@@ -36,8 +36,8 @@
                     </li>
                 </ul>
             </div>
-            <a id="importConfirm" class="lpButton" @click="importList">Import List</a>
-            <a class="lpButton close" @click="shown = false">Cancel Import</a>
+            <a id="importConfirm" class="lpButton" @click="importList">Importar lista</a>
+            <a class="lpButton close" @click="shown = false">Cancelar importacion</a>
         </modal>
         <form id="csvUpload">
             <input id="csv" type="file" name="csv">
@@ -88,11 +88,11 @@ export default {
                 return;
             }
             if (file.size > 1000000) {
-                alert('File is too big');
+                alert('El archivo es demasiado grande');
                 return;
             }
             if (name.substring(name.length - 4).toLowerCase() != '.csv') {
-                alert('Please select a CSV.');
+                alert('Selecciona un archivo CSV.');
                 return;
             }
             const reader = new FileReader();
@@ -157,7 +157,7 @@ export default {
             }
 
             if (!this.importData.data.length) {
-                alert('Unable to load spreadsheet - please verify the format.');
+                alert('No se ha podido cargar la hoja. Revisa el formato.');
             } else {
                 this.shown = true;
             }

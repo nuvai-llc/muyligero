@@ -7,17 +7,17 @@
 <template>
     <span v-if="isSignedIn" class="headerItem hasPopover">
         <PopoverHover id="share" @shown="focusShare">
-            <span slot="target"><i class="lpSprite lpLink" /> Share</span>
+            <span slot="target"><i class="lpSprite lpLink" /> Compartir</span>
             <div slot="content" class="lpFields">
                 <div class="lpField">
-                    <label for="shareUrl">Share your list</label>
+                    <label for="shareUrl">Comparte tu lista</label>
                     <input id="shareUrl" v-select-on-bus="'show-share-box'"  v-select-on-focus type="text" :value="shareUrl">
                 </div>
                 <div class="lpField">
-                    <label for="embedUrl">Embed your list</label>
+                    <label for="embedUrl">Inserta tu lista</label>
                     <textarea id="embedUrl" v-select-on-focus>&lt;script src="{{ this.baseUrl }}/e/{{ this.externalId }}"&gt;&lt;/script&gt;&lt;div id="{{ this.externalId }}"&gt;&lt;/div&gt;</textarea>
                 </div>
-                <a id="csvUrl" :href="csvUrl" target="_blank" class="lpHref"><i class="lpSprite lpSpriteDownload" />Export to CSV</a>
+                <a id="csvUrl" :href="csvUrl" target="_blank" class="lpHref"><i class="lpSprite lpSpriteDownload" />Exportar a CSV</a>
             </div>
         </PopoverHover>
     </span>
@@ -82,7 +82,7 @@ export default {
                         }, 0);
                     })
                     .catch((response) => {
-                        alert('An error occurred while attempting to get an ID for your list. Please try again later.'); // TODO
+                        alert('Ha ocurrido un error al generar el ID de tu lista. Intentalo de nuevo mas tarde.'); // TODO
                     });
             }
             bus.$emit('show-share-box');

@@ -8,22 +8,22 @@
 
 <template>
     <modal id="help" :shown="shown" @hide="shown = false">
-        <h2>Help</h2>
+        <h2>Ayuda</h2>
 
-        <p>Getting Started:</p>
+        <p>Primeros pasos:</p>
         <ol>
-            <li>Click on things to edit them. Give your list and category a name.</li>
-            <li>Add new categories and items to your list.</li>
-            <li>When you're done, share your list with others!</li>
+            <li>Haz clic en los elementos para editarlos. Pon nombre a tu lista y a cada categoria.</li>
+            <li>Anade categorias y articulos a tu lista.</li>
+            <li>Cuando termines, comparte tu lista con otras personas.</li>
         </ol>
         <hr>
-        <strong>Quantity and worn values</strong>
-        <p>If you have multiple quantity of an item and mark that item as worn, only the first quantity will count towards your worn weight. The rest will count towards your pack weight. This is because most items you have multiple of, you only wear one at once. This means you can't list your shoes/trekking poles with weights as individual weights and quantity of two - you should list as the combined weight with quantity of one.</p>
+        <strong>Cantidades y articulos puestos</strong>
+        <p>Si tienes varias unidades de un articulo y lo marcas como puesto, solo la primera unidad contara como peso puesto. El resto contara como peso de mochila. Esto se hace porque la mayoria de articulos de los que llevas varias unidades solo llevas una puesta al mismo tiempo. Por eso no conviene listar zapatos o bastones con peso individual y cantidad dos; es mejor usar el peso combinado con cantidad uno.</p>
         <hr>
-        <strong>Items in multiple lists</strong>
-        <p>If you copy your list or drag an item from the gear library into a second list, those items are now <strong>linked</strong>. This means that changes to an item in one place will update that list everywhere. If you want to copy your list without links, for now you can export to CSV and re-import the list.</p>
+        <strong>Articulos en varias listas</strong>
+        <p>Si copias tu lista o arrastras un articulo desde la biblioteca a una segunda lista, esos articulos quedan <strong>vinculados</strong>. Eso significa que cualquier cambio en un articulo se actualizara en todas las listas donde aparezca. Si quieres copiar una lista sin enlaces, por ahora puedes exportarla a CSV e importarla de nuevo.</p>
         <hr>
-        <p><a class="lpHref" href="mailto:info@lighterpack.com">More help available via email.</a></p>
+        <p><a class="lpHref" href="mailto:info@lighterpack.com">Si necesitas mas ayuda, escribenos por email.</a></p>
     </modal>
 </template>
 

@@ -5,7 +5,7 @@
 
 <template>
     <modal id="copyListDialog" :shown="shown" @hide="shown = false">
-        <h2>Choose the list to copy</h2>
+        <h2>Elige la lista que quieres copiar</h2>
         <select id="listToCopy" v-model="listId">
             <option v-for="list in library.lists" :value="list.id">
                 {{ list.name }}
@@ -13,10 +13,10 @@
         </select>
         <br><br>
         <p class="lpWarning">
-            <b>Note:</b> Copying a list will link the items between your lists. Updating an item in one list will alter that item in all other lists that item is in.
+            <b>Nota:</b> Al copiar una lista, los articulos quedaran vinculados entre tus listas. Si actualizas un articulo en una lista, ese cambio tambien se aplicara en todas las listas donde aparezca.
         </p>
-        <a id="copyConfirm" class="lpButton" @click="copyList">Copy List</a>
-        <a class="lpButton close" @click="shown = false">Cancel</a>
+        <a id="copyConfirm" class="lpButton" @click="copyList">Copiar lista</a>
+        <a class="lpButton close" @click="shown = false">Cancelar</a>
     </modal>
 </template>
 

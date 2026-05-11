@@ -7,11 +7,11 @@
 <template>
     <span class="headerItem hasPopover">
         <PopoverHover id="headerPopover">
-            <span slot="target">Signed in as <span class="username">{{ username }}</span> <i class="lpSprite lpExpand" /></span>
+            <span slot="target">Sesion iniciada como <span class="username">{{ username }}</span> <i class="lpSprite lpExpand" /></span>
             <div slot="content">
-                <a class="lpHref accountSettings" @click="showAccount">Account Settings</a><br>
-                <a class="lpHref" @click="showHelp">Help</a><br>
-                <a class="lpHref signout" @click="signout">Sign Out</a>
+                <a class="lpHref accountSettings" @click="showAccount">Ajustes de cuenta</a><br>
+                <a class="lpHref" @click="showHelp">Ayuda</a><br>
+                <a class="lpHref signout" @click="signout">Cerrar sesion</a>
             </div>
         </PopoverHover>
     </span>

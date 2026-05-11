@@ -5,7 +5,7 @@
         </p>
         <div class="lpFields">
             <input v-model="username" v-focus-on-create type="text" placeholder="Usuario" name="username" class="username">
-            <input v-model="password" v-select-on-bus="'focus-signin-password'" type="password" placeholder="Contraseña" name="password" class="password">
+            <input v-model="password" v-select-on-bus="'focus-signin-password'" type="password" placeholder="Contrasena" name="password" class="password">
         </div>
 
         <errors :errors="errors" />
@@ -17,7 +17,7 @@
             </button>
 
             <router-link to="/forgot-password" class="lpHref signin-forgot-password">
-                ¿Has olvidado tu usuario o contraseña?
+                Has olvidado tu usuario o contrasena?
             </router-link>
         </div>
     </form>
@@ -47,11 +47,11 @@ export default {
             this.errors = [];
 
             if (!this.username) {
-                this.errors.push({ field: 'username', message: 'Please enter a username.' });
+                this.errors.push({ field: 'username', message: 'Introduce tu nombre de usuario.' });
             }
 
             if (!this.password) {
-                this.errors.push({ field: 'password', message: 'Please enter a password.' });
+                this.errors.push({ field: 'password', message: 'Introduce tu contrasena.' });
             }
 
             if (this.errors.length) {

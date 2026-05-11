@@ -6,24 +6,24 @@
 
 <template>
     <modal id="deleteAccount" :shown="shown" @hide="shown = false">
-        <h2>Delete account?</h2>
+        <h2>Eliminar cuenta?</h2>
 
         <form id="accountForm" @submit.prevent="deleteAccount()">
             <p class="lpWarning">
-                <strong>This action is permanent and cannot be undone.</strong>
+                <strong>Esta accion es permanente y no se puede deshacer.</strong>
             </p>
-            <p>If you want to delete your account, please enter your current password and the text <strong>delete my account</strong>:</p>
+            <p>Si quieres eliminar tu cuenta, introduce tu contrasena actual y el texto <strong>eliminar mi cuenta</strong>:</p>
             <div class="lpFields">
-                <input v-model="currentPassword" type="password" placeholder="Current password" name="currentPassword" class="currentPassword">
+                <input v-model="currentPassword" type="password" placeholder="Contrasena actual" name="currentPassword" class="currentPassword">
 
-                <input v-model="confirmationText" type="text" name="confirmationText" placeholder="Confirmation text">
+                <input v-model="confirmationText" type="text" name="confirmationText" placeholder="Texto de confirmacion">
             </div>
 
             <errors :errors="errors" />
 
             <div class="lpButtons">
-                <input type="submit" value="Permanently delete account" :class="{'lpButton': true, 'lpButtonDisabled': !isConfirmationComplete}">
-                <a class="lpHref" @click="shown = false">Cancel</a>
+                <input type="submit" value="Eliminar cuenta permanentemente" :class="{'lpButton': true, 'lpButtonDisabled': !isConfirmationComplete}">
+                <a class="lpHref" @click="shown = false">Cancelar</a>
             </div>
         </form>
     </modal>
@@ -50,7 +50,7 @@ export default {
     },
     computed: {
         isConfirmationComplete() {
-            return this.confirmationText.toLocaleLowerCase() === 'delete my account';
+            return this.confirmationText.toLocaleLowerCase() === 'eliminar mi cuenta';
         },
     },
     beforeMount() {
@@ -63,11 +63,11 @@ export default {
             this.errors = [];
 
             if (!this.currentPassword) {
-                this.errors.push({ field: 'currentPassword', message: 'Please enter your current password.' });
+                this.errors.push({ field: 'currentPassword', message: 'Introduce tu contrasena actual.' });
             }
 
             if (!this.isConfirmationComplete) {
-                this.errors.push({ field: 'confirmationText', message: 'Please enter the confirmation text.' });
+                this.errors.push({ field: 'confirmationText', message: 'Introduce el texto de confirmacion.' });
             }
 
             if (this.errors.length) {

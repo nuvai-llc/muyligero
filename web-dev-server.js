@@ -1,3 +1,4 @@
+const path = require('path');
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const config = require('config');
@@ -9,7 +10,10 @@ const webpackConfig = require('./webpack.development.config');
 logger.info('Starting MuyLigero web dev server...');
 
 new WebpackDevServer(webpack(webpackConfig), {
-    contentBase: __dirname,
+    contentBase: [
+        path.join(__dirname, 'public'),
+        __dirname,
+    ],
     historyApiFallback: true,
     disableHostCheck: true,
     publicPath: webpackConfig.output.publicPath,

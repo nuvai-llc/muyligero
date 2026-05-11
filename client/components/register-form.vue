@@ -6,9 +6,9 @@
     <form class="lpRegister lpFields" @submit.prevent="submit">
         <div class="lpFields">
             <input v-model="username" v-focus-on-create type="text" placeholder="Usuario" name="username">
-            <input v-model="email" type="email" placeholder="Correo electrónico" name="email">
-            <input v-model="password" type="password" placeholder="Contraseña" name="password">
-            <input v-model="passwordConfirm" type="password" placeholder="Confirmar contraseña" name="passwordConfirm">
+            <input v-model="email" type="email" placeholder="Correo electronico" name="email">
+            <input v-model="password" type="password" placeholder="Contrasena" name="password">
+            <input v-model="passwordConfirm" type="password" placeholder="Confirmar contrasena" name="passwordConfirm">
         </div>
         <errors :errors="errors" />
         <div class="lpButtons">
@@ -66,31 +66,31 @@ export default {
             this.errors = [];
 
             if (!this.username) {
-                this.errors.push({ field: 'username', message: 'Please enter a username.' });
+                this.errors.push({ field: 'username', message: 'Introduce un nombre de usuario.' });
             }
 
             if (this.username && (this.username.length < 3 || this.username.length > 32)) {
-                this.errors.push({ field: 'username', message: 'Please enter a username between 3 and 32 characters.' });
+                this.errors.push({ field: 'username', message: 'Introduce un nombre de usuario de entre 3 y 32 caracteres.' });
             }
 
             if (!this.email) {
-                this.errors.push({ field: 'email', message: 'Please enter an email.' });
+                this.errors.push({ field: 'email', message: 'Introduce un email.' });
             }
 
             if (!this.password) {
-                this.errors.push({ field: 'password', message: 'Please enter a password.' });
+                this.errors.push({ field: 'password', message: 'Introduce una contrasena.' });
             }
 
             if (!this.passwordConfirm) {
-                this.errors.push({ field: 'passwordConfirm', message: 'Please enter a password confirmation.' });
+                this.errors.push({ field: 'passwordConfirm', message: 'Confirma la contrasena.' });
             }
 
             if (this.password && this.passwordConfirm && this.password !== this.passwordConfirm) {
-                this.errors.push({ field: 'password', message: "Your passwords don't match." });
+                this.errors.push({ field: 'password', message: 'Las contrasenas no coinciden.' });
             }
 
             if (this.password && (this.password.length < 5 || this.password.length > 60)) {
-                this.errors.push({ field: 'password', message: 'Please enter a password between 5 and 60 characters.' });
+                this.errors.push({ field: 'password', message: 'Introduce una contrasena de entre 5 y 60 caracteres.' });
             }
 
             if (this.errors.length) {

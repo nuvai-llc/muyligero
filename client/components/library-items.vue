@@ -97,8 +97,8 @@
 
 <template>
     <section id="libraryContainer">
-        <h2>Gear</h2>
-        <input id="librarySearch" v-model="searchText" type="text" placeholder="search items">
+        <h2>Equipo</h2>
+        <input id="librarySearch" v-model="searchText" type="text" placeholder="buscar articulos">
         <ul id="library">
             <li v-for="item in filteredItems" class="lpLibraryItem" :data-item-id="item.id">
                 <a v-if="item.url" :href="item.url" target="_blank" class="lpName lpHref">{{ item.name }}</a>
@@ -110,8 +110,8 @@
                 <span class="lpDescription">
                     {{ item.description }}
                 </span>
-                <a class="lpRemove lpRemoveLibraryItem speedbump" title="Delete this item permanently" @click="removeItem(item)"><i class="lpSprite lpSpriteRemove" /></a>
-                <div v-if="!item.inCurrentList" class="lpHandle lpLibraryItemHandle" title="Reorder this item" />
+                <a class="lpRemove lpRemoveLibraryItem speedbump" title="Eliminar este articulo para siempre" @click="removeItem(item)"><i class="lpSprite lpSpriteRemove" /></a>
+                <div v-if="!item.inCurrentList" class="lpHandle lpLibraryItemHandle" title="Arrastrar este articulo" />
             </li>
         </ul>
     </section>
@@ -225,7 +225,7 @@ export default {
                 this.$store.commit('removeItem', item);
             };
             const speedbumpOptions = {
-                body: 'Are you sure you want to delete this item? This cannot be undone.',
+                body: 'Estas seguro de que quieres eliminar este articulo? Esta accion no se puede deshacer.',
             };
             bus.$emit('initSpeedbump', callback, speedbumpOptions);
         },

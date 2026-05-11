@@ -4,7 +4,7 @@
 $welcomeVerticalSpacing: 80px;
 
 #lpWelcomeContainer {
-    background: #385f8b url("/images/lp_bg2.jpg") 50% 50%;
+    background: url("/images/bg_main.webp") 50% 50% no-repeat;
     background-size: cover;
     min-height: 100vh;
     padding-top: $welcomeVerticalSpacing;
@@ -12,7 +12,7 @@ $welcomeVerticalSpacing: 80px;
 
 #lpWelcome {
     h1 {
-        color: #fff;
+        color: #000;
         font-size: 28px;
         font-weight: normal;
         margin: 0 0 $welcomeVerticalSpacing;
