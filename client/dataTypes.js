@@ -2,6 +2,7 @@ const assignIn = require('lodash/assignIn');
 
 const colorUtils = require('./utils/color.js');
 const weightUtils = require('./utils/weight.js');
+const normalizeWeightUnit = weightUtils.normalizeWeightUnit;
 
 const defaultOptionalFields = {
     images: false,
@@ -16,7 +17,7 @@ const Item = function ({ id, unit }) {
     this.name = '';
     this.description = '';
     this.weight = 0;
-    this.authorUnit = 'oz';
+    this.authorUnit = 'g';
     if (unit) {
         this.authorUnit = unit;
     }
@@ -34,6 +35,7 @@ Item.prototype.save = function () {
 
 Item.prototype.load = function (input) {
     assignIn(this, input);
+    this.authorUnit = normalizeWeightUnit(this.authorUnit, 'g');
     if (typeof this.price === 'string') {
         this.price = parseFloat(this.price, 10);
     }
@@ -336,8 +338,8 @@ const Library = function () {
     this.lists = [];
     this.sequence = 0;
     this.defaultListId = 1;
-    this.totalUnit = 'oz';
-    this.itemUnit = 'oz';
+    this.totalUnit = 'kg';
+    this.itemUnit = 'g';
     this.showSidebar = true;
     this.showImages = false;
     this.optionalFields = assignIn({}, defaultOptionalFields);
@@ -601,8 +603,8 @@ Library.prototype.load = function (serializedLibrary) {
     }
 
     if (serializedLibrary.showSidebar) this.showSidebar = serializedLibrary.showSidebar;
-    if (serializedLibrary.totalUnit) this.totalUnit = serializedLibrary.totalUnit;
-    if (serializedLibrary.itemUnit) this.itemUnit = serializedLibrary.itemUnit;
+    if (serializedLibrary.totalUnit) this.totalUnit = normalizeWeightUnit(serializedLibrary.totalUnit, 'kg');
+    if (serializedLibrary.itemUnit) this.itemUnit = normalizeWeightUnit(serializedLibrary.itemUnit, 'g');
     if (serializedLibrary.currencySymbol) this.currencySymbol = serializedLibrary.currencySymbol;
 
     this.version = serializedLibrary.version;

@@ -246,7 +246,7 @@ router.get('/csv/:id', (req, res) => {
         }
 
         const fullUnits = {
-            oz: 'ounce', lb: 'pound', g: 'gram', kg: 'kilogram',
+            g: 'gram', kg: 'kilogram',
         };
         let out = 'Item Name,Category,desc,qty,weight,unit,url,price,worn,consumable\n';
 
@@ -453,7 +453,7 @@ var renderLibraryTotals = function (library, totalsTemplate, unitSelectTemplate)
 };
 
 function renderUnitSelect(unit, unitSelectTemplate, weight) {
-    const temp = { unit, units: [{ unit: 'oz', selected: (unit == 'oz') }, { unit: 'lb', selected: (unit == 'lb') }, { unit: 'g', selected: (unit == 'g') }, { unit: 'kg', selected: (unit == 'kg') }], weight };
+    const temp = { unit, units: [{ unit: 'g', selected: (unit == 'g') }, { unit: 'kg', selected: (unit == 'kg') }], weight };
     return Mustache.render(unitSelectTemplate, temp);
 }
 

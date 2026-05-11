@@ -45,16 +45,12 @@
         top: -1px;
         z-index: $aboveSidebar+1;
 
-        &.lb {
-            top: -30px;
-        }
-
         &.g {
-            top: -55px;
+            top: -29px;
         }
 
         &.kg {
-            top: -81px;
+            top: -55px;
         }
 
         li {
@@ -94,8 +90,6 @@ export default {
     data() {
         return {
             units: [
-                'oz',
-                'lb',
                 'g',
                 'kg',
             ],
