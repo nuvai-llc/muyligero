@@ -7,7 +7,7 @@ import { getSharedUser, registerUser, loginUser, logoutUser } from './auth-utils
 test('has title', async ({ page }) => {
   await page.goto(testRoot);
 
-  await expect(page).toHaveTitle(/LighterPack/);
+  await expect(page).toHaveTitle(/MuyLigero/);
   await expect(page).toHaveScreenshot();
 });
 
@@ -22,7 +22,7 @@ test.describe('User Authentication Tests', () => {
 
     await registerUser(page, username, password, email);
     await expect(page.getByText(`Signed in as ${username}`)).toBeVisible();
-    await expect(page.getByText('Welcome to LighterPack!')).toBeVisible();
+    await expect(page.getByText('Bienvenido a MuyLigero.')).toBeVisible();
   });
 
   test('should successfully log in an existing user', async ({ page }) => {
@@ -32,7 +32,7 @@ test.describe('User Authentication Tests', () => {
 
     await loginUser(page, username, password);
     await expect(page.getByText(`Signed in as ${username}`)).toBeVisible();
-    await expect(page.getByText('Welcome to LighterPack!')).toBeVisible();
+    await expect(page.getByText('Bienvenido a MuyLigero.')).toBeVisible();
     await expect(page).toHaveScreenshot();
   });
   
@@ -73,11 +73,11 @@ test.describe('User Authentication Tests', () => {
 
     await logoutUser(page);
 
-    await expect(page.getByText('Welcome to LighterPack!')).toBeHidden();
+    await expect(page.getByText('Bienvenido a MuyLigero.')).toBeHidden();
 
     await loginUser(page, username, newPassword);
 
-    await expect(page.getByText('Welcome to LighterPack!')).toBeVisible();
+    await expect(page.getByText('Bienvenido a MuyLigero.')).toBeVisible();
   });
 
   test('should successfully delete a user', async ({ page }) => {

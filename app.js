@@ -1,5 +1,3 @@
-const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const compression = require('compression');
@@ -21,9 +19,25 @@ morgan.token('requestid', function getUsername (req) {
 
 const app = express();
 app.enable('trust proxy');
+const corsOrigin = config.get('corsOrigin');
 
 app.use(function (req, res, next) {
     req.uuid = uuid.v4();
+    next();
+});
+
+app.use(function (req, res, next) {
+    if (corsOrigin) {
+        res.header('Access-Control-Allow-Origin', corsOrigin);
+        res.header('Access-Control-Allow-Credentials', 'true');
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+        res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS');
+    }
+
+    if (req.method === 'OPTIONS') {
+        return res.sendStatus(204);
+    }
+
     next();
 });
 
@@ -63,15 +77,7 @@ app.use('/', endpoints);
 app.use('/', moderationEndpoints);
 app.use('/', views);
 
-logger.info("Starting up Lighterpack...");
-
-if (config.get('environment') === 'production') {
-    webpackConfig = require('./webpack.config');
-} else {
-    webpackConfig = require('./webpack.development.config');
-}
-
-webpackCompiler = webpack(webpackConfig);
+logger.info("Starting up MuyLigero...");
 
 // Default port is 3000; we can have multiple bindings
 config.get('bindings').map(
@@ -80,34 +86,3 @@ config.get('bindings').map(
         logger.info(`Listening on [${bind}]:${config.get('port')}`);
     },
 );
-
-if (config.get('environment') !== 'production') {
-    new WebpackDevServer(webpack(webpackConfig), {
-        historyApiFallback: true,
-        disableHostCheck: true,
-        publicPath: webpackConfig.output.publicPath,
-        hot: true,
-        proxy: {
-            '*': {
-                target: `http://localhost:${config.get('port')}`,
-                secure: false,
-                changeOrigin: true,
-            },
-        },
-        stats: {
-            cached: false,
-            cachedAssets: false,
-            colors: { level: 2 },
-        },
-        watchOptions: {
-            aggregateTimeout: 300,
-            poll: 1000,
-        },
-    }).listen(config.get('devServerPort'), (err, result) => {
-        if (err) {
-            return logger.info(err);
-        }
-
-        logger.info(`Webpack dev server listening on port ${config.get('devServerPort')}`);
-    });
-}

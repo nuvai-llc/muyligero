@@ -4,20 +4,20 @@
             {{ message }}
         </p>
         <div class="lpFields">
-            <input v-model="username" v-focus-on-create type="text" placeholder="Username" name="username" class="username">
-            <input v-model="password" v-select-on-bus="'focus-signin-password'" type="password" placeholder="Password" name="password" class="password">
+            <input v-model="username" v-focus-on-create type="text" placeholder="Usuario" name="username" class="username">
+            <input v-model="password" v-select-on-bus="'focus-signin-password'" type="password" placeholder="Contraseña" name="password" class="password">
         </div>
 
         <errors :errors="errors" />
 
         <div class="lpButtons">
             <button class="lpButton">
-                Sign in
+                Entrar
                 <spinner v-if="fetching" />
             </button>
 
             <router-link to="/forgot-password" class="lpHref signin-forgot-password">
-                Forgot username/password?
+                ¿Has olvidado tu usuario o contraseña?
             </router-link>
         </div>
     </form>

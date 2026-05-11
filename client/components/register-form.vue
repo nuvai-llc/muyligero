@@ -5,18 +5,18 @@
 <template>
     <form class="lpRegister lpFields" @submit.prevent="submit">
         <div class="lpFields">
-            <input v-model="username" v-focus-on-create type="text" placeholder="Username" name="username">
-            <input v-model="email" type="email" placeholder="Email" name="email">
-            <input v-model="password" type="password" placeholder="Password" name="password">
-            <input v-model="passwordConfirm" type="password" placeholder="Confirm password" name="passwordConfirm">
+            <input v-model="username" v-focus-on-create type="text" placeholder="Usuario" name="username">
+            <input v-model="email" type="email" placeholder="Correo electrónico" name="email">
+            <input v-model="password" type="password" placeholder="Contraseña" name="password">
+            <input v-model="passwordConfirm" type="password" placeholder="Confirmar contraseña" name="passwordConfirm">
         </div>
         <errors :errors="errors" />
         <div class="lpButtons">
             <button class="lpButton">
-                Register
+                Crear cuenta
                 <spinner v-if="saving" />
             </button>
-            <a class="lpHref lpGetStarted" @click="loadLocal">Skip registration</a>
+            <a class="lpHref lpGetStarted" @click="loadLocal">Continuar sin registrarme</a>
         </div>
     </form>
 </template>

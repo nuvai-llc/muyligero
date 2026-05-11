@@ -79,9 +79,9 @@
                 <listSettings />
                 <accountDropdown v-if="isSignedIn" />
                 <span v-else class="headerItem signInRegisterButtons">
-                    <router-link to="/register" class="lpButton lpSmall">Register</router-link>
+                    <router-link to="/register" class="lpButton lpSmall">Crear cuenta</router-link>
                     or
-                    <router-link to="/signin" class="lpButton lpSmall">Sign In</router-link>
+                    <router-link to="/signin" class="lpButton lpSmall">Entrar</router-link>
                 </span>
                 <span class="clearfix" />
             </div>
@@ -91,10 +91,10 @@
             <div id="lpFooter">
                 <div class="lpSiteBy">
                     Site by <a class="lpHref" href="https://www.galenmaly.com/" target="_blank" rel="noopener noreferrer">Galen Maly</a>
-                    and <a class="lpHref" href="https://github.com/galenmaly/lighterpack/graphs/contributors" target="_blank" rel="noopener noreferrer">friends</a>.
+                    and <a class="lpHref" href="https://github.com/nuvai-llc/muyligero/graphs/contributors" target="_blank" rel="noopener noreferrer">friends</a>.
                 </div>
                 <div class="lpContact">
-                    <a class="lpHref" href="https://github.com/galenmaly/lighterpack" target="_blank" rel="noopener noreferrer">Copyleft</a> LighterPack 2019
+                    <a class="lpHref" href="https://github.com/nuvai-llc/muyligero" target="_blank" rel="noopener noreferrer">Copyleft</a> MuyLigero 2019
                     -
                     <a class="lpHref" href="mailto:info@lighterpack.com">Contact</a>
                 </div>

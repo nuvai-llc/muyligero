@@ -45,6 +45,10 @@ export default {
             return this.list.externalId || '';
         },
         baseUrl() {
+            if (typeof __SHARE_BASE_URL__ !== 'undefined' && __SHARE_BASE_URL__) {
+                return __SHARE_BASE_URL__;
+            }
+
             const location = window.location;
             return location.origin ? location.origin : `${location.protocol}//${location.hostname}`;
         },

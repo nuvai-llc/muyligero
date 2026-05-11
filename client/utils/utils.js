@@ -1,5 +1,7 @@
 import assignIn from 'lodash/assignIn';
 
+const apiBaseUrl = typeof __API_BASE_URL__ !== 'undefined' ? __API_BASE_URL__ : '';
+
 class lpError extends Error {
     constructor(response, statusCode = null) {
         super();
@@ -25,7 +27,8 @@ class lpError extends Error {
 window.fetchJson = (url, options) => {
     const fetchOptions = {
         method: 'GET',
-        headers: {}
+        headers: {},
+        credentials: 'include',
     };
 
     if (options) {
@@ -59,8 +62,16 @@ window.fetchJson = (url, options) => {
         });
     }
 
+    function buildUrl(inputUrl) {
+        if (!apiBaseUrl || /^https?:\/\//.test(inputUrl)) {
+            return inputUrl;
+        }
+
+        return `${apiBaseUrl}${inputUrl}`;
+    }
+
     return new Promise((resolve, reject) => {
-        fetch(url, fetchOptions)
+        fetch(buildUrl(url), fetchOptions)
             .then(parseJSON)
             .then((response) => {
                 if (response.ok) {

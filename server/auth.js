@@ -121,7 +121,7 @@ const generateSession = function (req, res, user, callback) {
         const token = buf.toString('hex');
         user.token = token;
         db.users.save(user);
-        res.cookie('lp', token, { path: '/', maxAge: 365 * 24 * 60 * 1000 });
+        res.cookie('lp', token, { path: '/', maxAge: 365 * 24 * 60 * 1000, sameSite: 'lax' });
         callback(req, res, user);
     });
 };

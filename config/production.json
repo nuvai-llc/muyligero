@@ -1,0 +1,17 @@
+{
+    "environment": "production",
+    "deployUrl": "https://muyligero.com",
+    "publicUrl": "https://muyligero.com",
+    "webUrl": "https://muyligero.com",
+    "port": 3000,
+    "bindings": [""],
+    "databaseUrl": "localhost/lighterpack",
+    "apiBaseUrl": "https://muyligero.com",
+    "shareBaseUrl": "https://muyligero.com",
+    "corsOrigin": "https://muyligero.com",
+    "imgurClientID": "",
+    "mailgunDomain": "",
+    "mailgunBaseURL": "",
+    "mailgunAPIKey": "",
+    "moderators": []
+}

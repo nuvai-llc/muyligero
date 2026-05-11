@@ -88,7 +88,7 @@ $welcomeVerticalSpacing: 80px;
 
 #lpWelcomeScreenshot {
     box-shadow: 0 3px 5px 2px rgba(0, 0, 0, 0.3);
-    max-width: 96%; //visual alignment with content
+    max-width: 96%;
 }
 
 #lpLaunchBanner {
@@ -107,37 +107,37 @@ $welcomeVerticalSpacing: 80px;
     <div id="lpWelcomeContainer">
         <div id="lpLaunchBanner">
             <div class="lpContainer">
-                <strong>Welcome to the new version of LighterPack!</strong> We hope you like it, and if you have any questions please <a href="mailto:info@lighterpack.com" class="lpHref">get in touch</a>.
+                <strong>Bienvenido a la nueva versión de MuyLigero.</strong> Esperamos que te guste, y si tienes cualquier duda puedes <a href="mailto:info@lighterpack.com" class="lpHref">ponerte en contacto</a>.
             </div>
         </div>
         <div id="lpWelcome" class="lpContainer">
-            <h1><strong>LighterPack</strong> helps you track the gear you bring on adventures.</h1>
+            <h1><strong>MuyLigero</strong> te ayuda a llevar el control del equipo que llevas en tus aventuras.</h1>
             <div class="lpWelcomeContent">
                 <div class="lpWelcomeRegisterContainer">
                     <div class="lpWelcomeRegister">
                         <h3 class="lpWelcomeContainerHeader">
-                            Register an account
+                            Crear una cuenta
                         </h3>
                         <registerForm />
                     </div>
                     <div class="lpValuePropContainer">
                         <ul id="lpValueProp">
                             <li id="valueEnter">
-                                <h3><strong>1.</strong>Enter your packing lists</h3>
+                                <h3><strong>1.</strong>Introduce tus listas de equipaje</h3>
                             </li>
                             <li id="valueVisualize">
-                                <h3><strong>2.</strong>Visualize your pack weights</h3>
+                                <h3><strong>2.</strong>Visualiza el peso de tu mochila</h3>
                             </li>
                             <li id="valueShare">
-                                <h3><strong>3.</strong>Share your lists with others</h3>
+                                <h3><strong>3.</strong>Comparte tus listas con otras personas</h3>
                             </li>
                         </ul>
-                        <img id="lpWelcomeScreenshot" src="/images/screenshot.jpg" alt="A screenshot of the LighterPack interface">
+                        <img id="lpWelcomeScreenshot" src="/images/screenshot.jpg" alt="Captura de la interfaz de MuyLigero">
                     </div>
                 </div>
                 <div class="lpWelcomeSigninContainer">
                     <h3 class="lpWelcomeContainerHeader">
-                        Sign in
+                        Iniciar sesión
                     </h3>
                     <SigninForm />
                 </div>
