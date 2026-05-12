@@ -1,5 +1,5 @@
 const DEFAULT_LANGUAGE = 'es';
-const ALLOWED_LANGUAGES = ['es', 'ca', 'eu', 'gl', 'en'];
+const ALLOWED_LANGUAGES = ['es', 'ca', 'eu', 'gl', 'pt', 'en'];
 
 const translations = {
     es: {
@@ -21,10 +21,11 @@ const translations = {
             send: 'Enviar',
         },
         languages: {
-            es: 'Espanol',
-            ca: 'Catala',
+            es: 'Español',
+            ca: 'Català',
             eu: 'Euskera',
             gl: 'Galego',
+            pt: 'Português',
             en: 'English',
         },
         theme: {
@@ -190,6 +191,7 @@ const translations = {
             copyOf: 'Copia de {name}',
         },
     },
+    pt: {},
     en: {},
     ca: {},
     eu: {},
@@ -200,7 +202,7 @@ const cloneSpanish = function (language) {
     translations[language] = JSON.parse(JSON.stringify(translations.es));
 };
 
-['en', 'ca', 'eu', 'gl'].forEach(cloneSpanish);
+['en', 'ca', 'eu', 'gl', 'pt'].forEach(cloneSpanish);
 
 translations.en.common = {
     ...translations.en.common,
@@ -219,7 +221,7 @@ translations.en.common = {
     backToSignIn: 'Back to sign in',
     send: 'Send',
 };
-translations.en.languages = { es: 'Spanish', ca: 'Catalan', eu: 'Basque', gl: 'Galician', en: 'English' };
+translations.en.languages = { es: 'Spanish', ca: 'Catalan', eu: 'Basque', gl: 'Galician', pt: 'Portuguese', en: 'English' };
 translations.en.theme = { light: 'Light', dark: 'Dark' };
 translations.en.welcome = {
     ...translations.en.welcome,
@@ -396,7 +398,7 @@ translations.ca.common = {
     backToSignIn: 'Torna a l inici de sessio',
     send: 'Envia',
 };
-translations.ca.languages = { es: 'Espanyol', ca: 'Catala', eu: 'Euskara', gl: 'Galego', en: 'Angles' };
+translations.ca.languages = { es: 'Espanyol', ca: 'Català', eu: 'Euskara', gl: 'Gallec', pt: 'Portuguès', en: 'Anglès' };
 translations.ca.theme = { light: 'Clar', dark: 'Fosc' };
 translations.ca.welcome = {
     ...translations.ca.welcome,
@@ -573,7 +575,7 @@ translations.eu.common = {
     backToSignIn: 'Itzuli saio hasierara',
     send: 'Bidali',
 };
-translations.eu.languages = { es: 'Gaztelania', ca: 'Katalana', eu: 'Euskara', gl: 'Galegoa', en: 'Ingelesa' };
+translations.eu.languages = { es: 'Gaztelania', ca: 'Katalana', eu: 'Euskara', gl: 'Galegoa', pt: 'Portugesa', en: 'Ingelesa' };
 translations.eu.theme = { light: 'Argia', dark: 'Iluna' };
 translations.eu.welcome = {
     ...translations.eu.welcome,
@@ -750,7 +752,39 @@ translations.gl.common = {
     backToSignIn: 'Volver ao inicio de sesion',
     send: 'Enviar',
 };
-translations.gl.languages = { es: 'Espanol', ca: 'Catalan', eu: 'Euskera', gl: 'Galego', en: 'Ingles' };
+translations.gl.languages = { es: 'Español', ca: 'Catalán', eu: 'Éuscaro', gl: 'Galego', pt: 'Portugués', en: 'Inglés' };
+translations.pt.common = {
+    ...translations.pt.common,
+    createAccount: 'Criar conta',
+    signIn: 'Entrar',
+    signOut: 'Terminar sessão',
+    settings: 'Definições',
+    share: 'Partilhar',
+    help: 'Ajuda',
+    save: 'Guardar',
+    cancel: 'Cancelar',
+    delete: 'Eliminar',
+    accountSettings: 'Definições da conta',
+    language: 'Idioma',
+    currency: 'Moeda',
+    backToSignIn: 'Voltar ao início de sessão',
+    send: 'Enviar',
+};
+translations.pt.languages = { es: 'Espanhol', ca: 'Català', eu: 'Euskera', gl: 'Galego', pt: 'Português', en: 'Inglês' };
+translations.pt.theme = { light: 'Claro', dark: 'Escuro' };
+translations.pt.welcome = {
+    ...translations.pt.welcome,
+    bannerTitle: 'Bem-vindo à nova versão do {appName}.',
+    bannerBodyPrefix: 'Esperamos que gostes e, se tiveres alguma dúvida, podes',
+    bannerContactLink: 'entrar em contacto',
+    hero: 'O {appName} ajuda-te a controlar o equipamento que levas nas tuas aventuras.',
+    createAccount: 'Criar conta',
+    signIn: 'Iniciar sessão',
+    value1: 'Introduz as tuas listas de equipamento',
+    value2: 'Visualiza o peso da tua mochila',
+    value3: 'Partilha as tuas listas com outras pessoas',
+    screenshotAlt: 'Captura da interface do {appName}',
+};
 translations.gl.theme = { light: 'Claro', dark: 'Escuro' };
 translations.gl.welcome = {
     ...translations.gl.welcome,
