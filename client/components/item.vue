@@ -54,19 +54,19 @@
 <template>
     <li :id="item.id" :class="'lpItem '+ item.classes">
         <span class="lpHandleCell">
-            <div class="lpItemHandle lpHandle" title="Reordenar este articulo" />
+            <div class="lpItemHandle lpHandle" :title="$t('item.reorder')" />
         </span>
         <span v-if="library.optionalFields['images']" class="lpImageCell">
             <img v-if="thumbnailImage" class="lpItemImage" :src="thumbnailImage" @click="viewItemImage()">
         </span>
-        <input v-model="item.name" v-focus-on-create="categoryItem._isNew" type="text" class="lpName lpSilent" placeholder="Nombre" @input="saveItem">
-        <input v-model="item.description" type="text" class="lpDescription lpSilent" placeholder="Descripcion" @input="saveItem">
+        <input v-model="item.name" v-focus-on-create="categoryItem._isNew" type="text" class="lpName lpSilent" :placeholder="$t('item.namePlaceholder')" @input="saveItem">
+        <input v-model="item.description" type="text" class="lpDescription lpSilent" :placeholder="$t('item.descriptionPlaceholder')" @input="saveItem">
         <span class="lpActionsCell">
-            <i class="lpSprite lpCamera" title="Subir una foto o usar una imagen desde la web" @click="updateItemImage" />
-            <i class="lpSprite lpLink" :class="{lpActive: item.url}" title="Anadir un enlace a este articulo" @click="updateItemLink" />
-            <i v-if="library.optionalFields['worn']" class="lpSprite lpWorn" :class="{lpActive: categoryItem.worn}" title="Marcar este articulo como puesto" @click="toggleWorn" />
-            <i v-if="library.optionalFields['consumable']" class="lpSprite lpConsumable" :class="{lpActive: categoryItem.consumable}" title="Marcar este articulo como consumible" @click="toggleConsumable" />
-            <i :class="'lpSprite lpStar lpStar' + categoryItem.star" title="Destacar este articulo" @click="cycleStar" />
+            <i class="lpSprite lpCamera" :title="$t('item.uploadImage')" @click="updateItemImage" />
+            <i class="lpSprite lpLink" :class="{lpActive: item.url}" :title="$t('item.addLink')" @click="updateItemLink" />
+            <i v-if="library.optionalFields['worn']" class="lpSprite lpWorn" :class="{lpActive: categoryItem.worn}" :title="$t('item.markWorn')" @click="toggleWorn" />
+            <i v-if="library.optionalFields['consumable']" class="lpSprite lpConsumable" :class="{lpActive: categoryItem.consumable}" :title="$t('item.markConsumable')" @click="toggleConsumable" />
+            <i :class="'lpSprite lpStar lpStar' + categoryItem.star" :title="$t('item.highlight')" @click="cycleStar" />
         </span>
         <span v-if="library.optionalFields['price']" class="lpPriceCell">
             <input v-model="displayPrice" v-empty-if-zero type="text" :class="{lpPrice: true, lpNumber: true, lpSilent: true, lpSilentError: priceError}" @input="savePrice" @keydown.up="incrementPrice($event)" @keydown.down="decrementPrice($event)" @blur="setDisplayPrice">
@@ -83,7 +83,7 @@
             </span>
         </span>
         <span class="lpRemoveCell">
-            <a class="lpRemove lpRemoveItem" title="Quitar este articulo" @click="removeItem"><i class="lpSprite lpSpriteRemove" /></a>
+            <a class="lpRemove lpRemoveItem" :title="$t('item.remove')" @click="removeItem"><i class="lpSprite lpSpriteRemove" /></a>
         </span>
     </li>
 </template>

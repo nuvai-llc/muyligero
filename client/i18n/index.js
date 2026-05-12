@@ -111,6 +111,17 @@ const translations = {
             removeItemConfirm: 'Estas seguro de que quieres eliminar este articulo? Esta accion no se puede deshacer.',
             removeListConfirm: 'Estas seguro de que quieres eliminar esta lista? Esta accion no se puede deshacer.',
         },
+        item: {
+            namePlaceholder: 'Nombre',
+            descriptionPlaceholder: 'Descripcion',
+            reorder: 'Reordenar este articulo',
+            uploadImage: 'Subir una foto o usar una imagen desde la web',
+            addLink: 'Anadir un enlace a este articulo',
+            markWorn: 'Marcar este articulo como puesto',
+            markConsumable: 'Marcar este articulo como consumible',
+            highlight: 'Destacar este articulo',
+            remove: 'Quitar este articulo',
+        },
         summary: {
             category: 'Categoria',
             price: 'Precio',
@@ -303,6 +314,17 @@ translations.en.list = {
     removeItemConfirm: 'Are you sure you want to delete this item? This action cannot be undone.',
     removeListConfirm: 'Are you sure you want to delete this list? This action cannot be undone.',
 };
+translations.en.item = {
+    namePlaceholder: 'Name',
+    descriptionPlaceholder: 'Description',
+    reorder: 'Reorder this item',
+    uploadImage: 'Upload a photo or use an image from the web',
+    addLink: 'Add a link to this item',
+    markWorn: 'Mark this item as worn',
+    markConsumable: 'Mark this item as consumable',
+    highlight: 'Highlight this item',
+    remove: 'Remove this item',
+};
 translations.en.summary = {
     category: 'Category',
     price: 'Price',
@@ -479,6 +501,17 @@ translations.ca.list = {
     removeCategoryConfirm: 'Segur que vols eliminar aquesta categoria? Aquesta accio no es pot desfer.',
     removeItemConfirm: 'Segur que vols eliminar aquest article? Aquesta accio no es pot desfer.',
     removeListConfirm: 'Segur que vols eliminar aquesta llista? Aquesta accio no es pot desfer.',
+};
+translations.ca.item = {
+    namePlaceholder: 'Nom',
+    descriptionPlaceholder: 'Descripcio',
+    reorder: 'Reordena aquest article',
+    uploadImage: 'Puja una foto o fes servir una imatge del web',
+    addLink: 'Afegeix un enllac a aquest article',
+    markWorn: 'Marca aquest article com a posat',
+    markConsumable: 'Marca aquest article com a consumible',
+    highlight: 'Destaca aquest article',
+    remove: 'Treu aquest article',
 };
 translations.ca.summary = {
     category: 'Categoria',
@@ -657,6 +690,17 @@ translations.eu.list = {
     removeItemConfirm: 'Ziur zaude artikulu hau ezabatu nahi duzula? Ekintza hau ezin da desegin.',
     removeListConfirm: 'Ziur zaude zerrenda hau ezabatu nahi duzula? Ekintza hau ezin da desegin.',
 };
+translations.eu.item = {
+    namePlaceholder: 'Izena',
+    descriptionPlaceholder: 'Deskribapena',
+    reorder: 'Berrantolatu artikulu hau',
+    uploadImage: 'Igo argazki bat edo erabili webeko irudi bat',
+    addLink: 'Gehitu esteka bat artikulu honi',
+    markWorn: 'Markatu artikulu hau jantzita bezala',
+    markConsumable: 'Markatu artikulu hau kontsumigarri bezala',
+    highlight: 'Nabarmendu artikulu hau',
+    remove: 'Kendu artikulu hau',
+};
 translations.eu.summary = {
     category: 'Kategoria',
     price: 'Prezioa',
@@ -785,6 +829,161 @@ translations.pt.welcome = {
     value3: 'Partilha as tuas listas com outras pessoas',
     screenshotAlt: 'Captura da interface do {appName}',
 };
+translations.pt.auth = {
+    ...translations.pt.auth,
+    signInTitle: 'Iniciar sessão',
+    needAccount: 'Precisas de te registar?',
+    registerTitle: 'Criar conta',
+    alreadyRegistered: 'Já tens conta?',
+    localDataNotice: 'Os teus dados atuais neste computador serão guardados na tua nova conta.',
+    resetSentMessage: 'Enviámos um email para o endereço associado à tua conta {appName}. Nota: os emails para endereços yahoo.com podem falhar. Escreve para info@lighterpack.com se não o receberes.',
+    forgotCredentials: 'Esqueceste-te do teu utilizador ou palavra-passe?',
+    forgotPasswordTitle: 'Esqueceste-te da tua palavra-passe?',
+    forgotPasswordPrompt: 'Introduz o teu nome de utilizador.',
+    forgotUsernameTitle: 'Esqueceste-te do teu utilizador?',
+    forgotUsernamePrompt: 'Introduz o teu endereço de email.',
+};
+translations.pt.forms = {
+    ...translations.pt.forms,
+    username: 'Utilizador',
+    email: 'Email',
+    emailAddress: 'Endereço de email',
+    password: 'Palavra-passe',
+    confirmPassword: 'Confirmar palavra-passe',
+    currentPassword: 'Palavra-passe atual',
+    newPassword: 'Nova palavra-passe',
+    confirmNewPassword: 'Confirmar nova palavra-passe',
+    newEmail: 'Novo email',
+    confirmationText: 'Texto de confirmação',
+    continueWithoutAccount: 'Continuar sem me registar',
+};
+translations.pt.settings = {
+    images: 'Imagens dos artigos',
+    prices: 'Preços dos artigos',
+    worn: 'Artigos vestidos',
+    consumable: 'Artigos consumíveis',
+    listDescription: 'Descrições das listas',
+};
+translations.pt.dashboard = { listNamePlaceholder: 'Nome da lista' };
+translations.pt.sidebar = {
+    lists: 'Listas',
+    closet: 'Armário',
+    newList: 'Nova lista',
+    importCsv: 'Importar CSV',
+    copyList: 'Copiar uma lista',
+    reorderList: 'Reordenar esta lista',
+    removeList: 'Eliminar esta lista',
+    searchItems: 'Pesquisar artigos',
+    removeItemForever: 'Eliminar este artigo para sempre',
+    dragItem: 'Arrastar este artigo',
+    defaultListName: 'Nova lista',
+};
+translations.pt.list = {
+    welcomeTitle: 'Bem-vindo ao {appName}.',
+    welcomeIntro: 'Isto é o que precisas para começar:',
+    step1: 'Clica nos elementos para os editar. Dá nome à tua lista e a cada categoria.',
+    step2: 'Adiciona novas categorias e atribui peso aos artigos para começares a ver o resumo.',
+    step3: 'Quando terminares, partilha a tua lista com outras pessoas.',
+    localNotice: 'Os teus dados estão a ser guardados no teu computador. Para partilhar as tuas listas, cria uma conta.',
+    description: 'Descrição da lista',
+    markdownCompatible: 'compatível',
+    addCategory: 'Nova categoria',
+    categoryNamePlaceholder: 'Nome da categoria',
+    reorderCategory: 'Reordenar esta categoria',
+    removeCategory: 'Eliminar esta categoria',
+    newItem: 'Novo artigo',
+    removeCategoryConfirm: 'Tens a certeza de que queres eliminar esta categoria? Esta ação não pode ser desfeita.',
+    removeItemConfirm: 'Tens a certeza de que queres eliminar este artigo? Esta ação não pode ser desfeita.',
+    removeListConfirm: 'Tens a certeza de que queres eliminar esta lista? Esta ação não pode ser desfeita.',
+};
+translations.pt.item = {
+    namePlaceholder: 'Nome',
+    descriptionPlaceholder: 'Descrição',
+    reorder: 'Reordenar este artigo',
+    uploadImage: 'Carregar uma foto ou usar uma imagem da web',
+    addLink: 'Adicionar uma ligação a este artigo',
+    markWorn: 'Marcar este artigo como vestido',
+    markConsumable: 'Marcar este artigo como consumível',
+    highlight: 'Destacar este artigo',
+    remove: 'Remover este artigo',
+};
+translations.pt.summary = {
+    category: 'Categoria',
+    price: 'Preço',
+    weight: 'Peso',
+    total: 'Total',
+    consumable: 'Consumível',
+    worn: 'Vestido',
+    baseWeight: 'Peso base',
+    itemsCount: '{count} artigos',
+    packWeightTitle: '{weight} {unit} peso da mochila (consumível + peso base)',
+    qty: 'qtd.',
+};
+translations.pt.share = {
+    shareList: 'Partilha a tua lista',
+    embedList: 'Incorpora a tua lista',
+    exportCsv: 'Exportar para CSV',
+    generateError: 'Ocorreu um erro ao gerar o ID da tua lista. Tenta novamente mais tarde.',
+};
+translations.pt.account = {
+    signedInAs: 'Sessão iniciada como {username}',
+    deleteAccount: 'Eliminar conta',
+    title: 'Definições da conta',
+};
+translations.pt.accountDelete = {
+    title: 'Eliminar conta?',
+    warning: 'Esta ação é permanente e não pode ser desfeita.',
+    instructions: 'Se queres eliminar a tua conta, introduz a tua palavra-passe atual e o texto {phrase}:',
+    phrase: 'eliminar a minha conta',
+    button: 'Eliminar conta permanentemente',
+};
+translations.pt.help = {
+    title: 'Ajuda',
+    gettingStarted: 'Primeiros passos:',
+    step1: 'Clica nos elementos para os editar. Dá nome à tua lista e a cada categoria.',
+    step2: 'Adiciona categorias e artigos à tua lista.',
+    step3: 'Quando terminares, partilha a tua lista com outras pessoas.',
+    wornTitle: 'Quantidades e artigos vestidos',
+    wornBody: 'Se tiveres várias unidades de um artigo e o marcares como vestido, apenas a primeira unidade contará como peso vestido. O resto contará como peso da mochila.',
+    linkedTitle: 'Artigos em várias listas',
+    linkedBody: 'Se copiares a tua lista ou arrastares um artigo da biblioteca para uma segunda lista, esses artigos ficam ligados. Qualquer alteração a um artigo será atualizada em todas as listas onde ele apareça.',
+    contact: 'Se precisares de mais ajuda, escreve-nos por email.',
+};
+translations.pt.importCsv = {
+    title: 'Confirmar importação',
+    item: 'Artigo',
+    category: 'Categoria',
+    description: 'Descrição',
+    qty: 'Qtd.',
+    weight: 'Peso',
+    unit: 'Unidade',
+    importList: 'Importar lista',
+    cancelImport: 'Cancelar importação',
+    tooLarge: 'O ficheiro é demasiado grande',
+    selectCsv: 'Seleciona um ficheiro CSV.',
+    invalidFormat: 'Não foi possível carregar a folha. Verifica o formato.',
+};
+translations.pt.validation = {
+    enterUsername: 'Introduz um nome de utilizador.',
+    usernameLength: 'Introduz um nome de utilizador entre 3 e 32 caracteres.',
+    enterEmail: 'Introduz um email.',
+    enterPassword: 'Introduz uma palavra-passe.',
+    confirmPassword: 'Confirma a palavra-passe.',
+    passwordsMismatch: 'As palavras-passe não coincidem.',
+    passwordLength: 'Introduz uma palavra-passe entre 5 e 60 caracteres.',
+    enterYourUsername: 'Introduz o teu nome de utilizador.',
+    enterYourPassword: 'Introduz a tua palavra-passe.',
+    enterCurrentPassword: 'Introduz a tua palavra-passe atual.',
+    enterConfirmationText: 'Introduz o texto de confirmação.',
+};
+translations.pt.errors = {
+    unknown: 'Ocorreu um erro desconhecido.',
+    loadData: 'Ocorreu um erro ao carregar os teus dados.',
+    fetchData: 'Ocorreu um erro ao obter os teus dados. Tenta novamente mais tarde.',
+    saveData: 'Ocorreu um erro ao guardar os teus dados.',
+    genericRetry: 'Ocorreu um erro. Tenta novamente mais tarde.',
+};
+translations.pt.data = { copyOf: 'Cópia de {name}' };
 translations.gl.theme = { light: 'Claro', dark: 'Escuro' };
 translations.gl.welcome = {
     ...translations.gl.welcome,
@@ -865,6 +1064,17 @@ translations.gl.list = {
     removeCategoryConfirm: 'Seguro que queres eliminar esta categoria? Esta accion non se pode desfacer.',
     removeItemConfirm: 'Seguro que queres eliminar este artigo? Esta accion non se pode desfacer.',
     removeListConfirm: 'Seguro que queres eliminar esta lista? Esta accion non se pode desfacer.',
+};
+translations.gl.item = {
+    namePlaceholder: 'Nome',
+    descriptionPlaceholder: 'Descripcion',
+    reorder: 'Reordenar este artigo',
+    uploadImage: 'Subir unha foto ou usar unha imaxe da web',
+    addLink: 'Engadir unha ligazon a este artigo',
+    markWorn: 'Marcar este artigo como posto',
+    markConsumable: 'Marcar este artigo como consumible',
+    highlight: 'Destacar este artigo',
+    remove: 'Quitar este artigo',
 };
 translations.gl.summary = {
     category: 'Categoria',
