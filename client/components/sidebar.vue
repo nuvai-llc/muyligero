@@ -6,7 +6,7 @@ $sidebarOverflow: 1000px;
 $sidebarPadding: 20px;
 
 #sidebar {
-    background: #555;
+    background: var(--app-panel-dark);
     box-shadow: -7px 0 7px rgba(0, 0, 0, 0.2) inset;
     color: #fff;
     height: 100%;
@@ -30,10 +30,6 @@ $sidebarPadding: 20px;
         margin: 0 -20px 20px 0;
         padding: 20px 0 20px;
         position: relative;
-
-        span {
-            color: #aaa;
-        }
     }
 
     section {
@@ -47,14 +43,14 @@ $sidebarPadding: 20px;
     }
 
     ul {
-        background: #606060;
+        background: var(--app-panel);
         margin: 0;
         overflow-x: hidden;
         padding: 0;
     }
 
     .lpHref {
-        color: $blue2;
+        color: #fff;
     }
 }
 
@@ -75,7 +71,7 @@ $sidebarPadding: 20px;
 <template>
     <div id="sidebar">
         <div id="scrollable">
-            <h1>MuyLigero <span>(beta)</span></h1>
+            <h1>MuyLigero</h1>
 
             <libraryLists />
             <libraryItems />

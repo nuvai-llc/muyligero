@@ -42,7 +42,7 @@
 
     .lpPopover {
         &:hover .lpTarget {
-            color: $blue1;
+            color: var(--app-link);
         }
     }
 
@@ -76,6 +76,7 @@
                 </span>
                 <input id="lpListName" :value="list.name" type="text" class="lpListName lpSilent headerItem" value="Nueva lista" placeholder="Nombre de la lista" autocomplete="off" name="lastpass-disable-search" @input="updateListName">
                 <share />
+                <themeToggle />
                 <listSettings />
                 <accountDropdown v-if="isSignedIn" />
                 <span v-else class="headerItem signInRegisterButtons">
@@ -88,17 +89,6 @@
 
             <list />
 
-            <div id="lpFooter">
-                <div class="lpSiteBy">
-                    Sitio creado por <a class="lpHref" href="https://www.galenmaly.com/" target="_blank" rel="noopener noreferrer">Galen Maly</a>
-                    y <a class="lpHref" href="https://github.com/nuvai-llc/muyligero/graphs/contributors" target="_blank" rel="noopener noreferrer">colaboradores</a>.
-                </div>
-                <div class="lpContact">
-                    <a class="lpHref" href="https://github.com/nuvai-llc/muyligero" target="_blank" rel="noopener noreferrer">Copyleft</a> MuyLigero 2019
-                    -
-                    <a class="lpHref" href="mailto:info@lighterpack.com">Contacto</a>
-                </div>
-            </div>
         </div>
 
         <globalAlerts />
@@ -118,6 +108,7 @@
 import globalAlerts from '../components/global-alerts.vue';
 import sidebar from '../components/sidebar.vue';
 import share from '../components/share.vue';
+import themeToggle from '../components/theme-toggle.vue';
 import listSettings from '../components/list-settings.vue';
 import accountDropdown from '../components/account-dropdown.vue';
 import forgotPassword from './forgot-password.vue';
@@ -138,6 +129,7 @@ export default {
     components: {
         sidebar,
         share,
+        themeToggle,
         listSettings,
         accountDropdown,
         forgotPassword,

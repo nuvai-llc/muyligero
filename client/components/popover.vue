@@ -14,9 +14,9 @@
     }
 
     .lpContent {
-        background: #fff;
+        background: var(--app-surface);
         box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
-        color: $content;
+        color: var(--app-text);
         left: 50%;
         margin-top: 15px;
         min-width: 100%;
@@ -31,7 +31,7 @@
         z-index: $dialog;
 
         &::before {
-            background-color: #fff;
+            background-color: var(--app-surface);
             box-shadow: 0 0 6px rgba(0, 0, 0, 0.25);
             content: "";
             display: block;
@@ -46,7 +46,7 @@
         }
 
         &::after {
-            background: #fff;
+            background: var(--app-surface);
             content: "";
             display: block;
             height: 15px;
@@ -74,7 +74,7 @@
         }
 
         hr {
-            border-color: $border1;
+            border-color: var(--app-border);
             margin: 7px -0;
             padding: 0;
         }

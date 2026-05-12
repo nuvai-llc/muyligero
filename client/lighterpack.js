@@ -18,6 +18,25 @@ Vue.use(VueRouter);
 
 const utils = require('./utils/utils.js');
 
+const applyTheme = function (theme) {
+    const normalizedTheme = theme === 'dark' ? 'dark' : 'light';
+    document.body.classList.remove('theme-light', 'theme-dark');
+    document.body.classList.add(`theme-${normalizedTheme}`);
+    const root = document.getElementById('lp');
+    if (root) {
+        root.classList.remove('theme-light', 'theme-dark');
+        root.classList.add(`theme-${normalizedTheme}`);
+    }
+    localStorage.uiTheme = normalizedTheme;
+};
+
+const applyLanguage = function (language) {
+    const allowedLanguages = ['es', 'ca', 'eu', 'gl', 'en'];
+    const normalizedLanguage = allowedLanguages.indexOf(language) > -1 ? language : 'es';
+    document.documentElement.lang = normalizedLanguage;
+    localStorage.uiLanguage = normalizedLanguage;
+};
+
 window.Vue = Vue; // surfacing Vue globally for utils methods
 window.bus = new Vue(); // global event bus
 window.router = new VueRouter({
@@ -28,6 +47,13 @@ window.router = new VueRouter({
 bus.$on('unauthorized', (error) => {
     window.location = '/signin';
 });
+
+const savedTheme = localStorage.uiTheme || 'light';
+const savedLanguage = localStorage.uiLanguage || 'es';
+store.commit('setTheme', savedTheme);
+store.commit('setLanguage', savedLanguage);
+applyTheme(savedTheme);
+applyLanguage(savedLanguage);
 
 store.dispatch('init')
     .then(() => {
@@ -52,9 +78,17 @@ var initLighterPack = function () {
             $route(to, from) {
                 this.path = to.path;
             },
+            '$store.state.theme'(theme) {
+                applyTheme(theme);
+            },
+            '$store.state.language'(language) {
+                applyLanguage(language);
+            },
         },
         mounted() {
             this.path = router.currentRoute.path;
+            applyTheme(this.$store.state.theme);
+            applyLanguage(this.$store.state.language);
         },
     }).$mount('#lp');
 };

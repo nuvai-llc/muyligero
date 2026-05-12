@@ -146,12 +146,10 @@ $welcomeVerticalSpacing: 80px;
         </div>
 
         <globalAlerts />
-        <blackoutFooter />
     </div>
 </template>
 
 <script>
-import blackoutFooter from '../components/blackout-footer.vue';
 import globalAlerts from '../components/global-alerts.vue';
 import modal from '../components/modal.vue';
 import registerForm from '../components/register-form.vue';
@@ -160,7 +158,6 @@ import SigninForm from '../components/signin-form.vue';
 export default {
     name: 'Welcome',
     components: {
-        blackoutFooter,
         globalAlerts,
         modal,
         registerForm,

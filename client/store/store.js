@@ -22,6 +22,8 @@ const store = new Vuex.Store({
         saveType: null,
         lastSaveData: null,
         loggedIn: false,
+        theme: 'light',
+        language: 'es',
         directiveInstances: {},
         globalAlerts: [],
     },
@@ -50,6 +52,13 @@ const store = new Vuex.Store({
         },
         setLoggedIn(state, loggedIn) {
             state.loggedIn = loggedIn;
+        },
+        setTheme(state, theme) {
+            state.theme = theme === 'dark' ? 'dark' : 'light';
+        },
+        setLanguage(state, language) {
+            const allowedLanguages = ['es', 'ca', 'eu', 'gl', 'en'];
+            state.language = allowedLanguages.indexOf(language) > -1 ? language : 'es';
         },
         loadLibraryData(state, libraryData) {
             const library = new Library();
@@ -295,42 +304,46 @@ const store = new Vuex.Store({
     },
     plugins: [
         function save(store) {
-            store.subscribe(debounce((mutation, state) => {
-                const ignore = [
-                    'setIsSaving',
-                    'setSaveType',
-                    'setSyncToken',
-                    'setLastSaveData',
-                    'signout',
-                    'setLoggedIn',
-                    'loadLibraryData',
-                    'clearLibraryData',
-                ];
-                if (!state.library || ignore.indexOf(mutation.type) > -1) {
+            const ignore = [
+                'setIsSaving',
+                'setSaveType',
+                'setSyncToken',
+                'setLastSaveData',
+                'signout',
+                'setLoggedIn',
+                'loadLibraryData',
+                'clearLibraryData',
+            ];
+            const immediateSaveMutations = [
+                'removeItem',
+                'removeCategory',
+                'removeList',
+                'removeItemFromCategory',
+            ];
+
+            const persistState = function (state) {
+                if (!state.library) {
                     return;
                 }
+
                 const saveData = JSON.stringify(state.library.save());
 
                 if (saveData == state.lastSaveData) {
                     return;
                 }
 
-                const saveRemotely = function (saveData) {
+                const saveRemotely = function (saveDataToPersist) {
                     if (state.isSaving) {
                         setTimeout(() => { store.commit('save', true); }, saveInterval + 1);
                         return;
                     }
 
-                    if (!saveData) {
-                        saveData = JSON.stringify(state.library.save());
-                    }
-
                     store.commit('setIsSaving', true);
-                    store.commit('setLastSaveData', saveData);
+                    store.commit('setLastSaveData', saveDataToPersist);
 
                     return fetchJson('/saveLibrary/', {
                         method: 'POST',
-                        body: JSON.stringify({ syncToken: state.syncToken, username: state.loggedIn, data: saveData }),
+                        body: JSON.stringify({ syncToken: state.syncToken, username: state.loggedIn, data: saveDataToPersist }),
                         headers: {
                             'Content-Type': 'application/json',
                         },
@@ -358,7 +371,22 @@ const store = new Vuex.Store({
                     saveRemotely(saveData);
                 } else if (state.saveType === 'local') {
                     localStorage.library = saveData;
+                    store.commit('setLastSaveData', saveData);
                 }
+            };
+
+            store.subscribe((mutation, state) => {
+                if (!state.library || ignore.indexOf(mutation.type) > -1 || immediateSaveMutations.indexOf(mutation.type) === -1) {
+                    return;
+                }
+                persistState(state);
+            });
+
+            store.subscribe(debounce((mutation, state) => {
+                if (!state.library || ignore.indexOf(mutation.type) > -1 || immediateSaveMutations.indexOf(mutation.type) > -1) {
+                    return;
+                }
+                persistState(state);
             }, saveInterval, { maxWait: saveInterval * 3 }));
         },
     ],

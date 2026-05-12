@@ -45,19 +45,16 @@
                 </router-link>
             </div>
         </modal>
-        <blackoutFooter />
     </div>
 </template>
 
 <script>
-import blackoutFooter from '../components/blackout-footer.vue';
 import errors from '../components/errors.vue';
 import modal from '../components/modal.vue';
 
 export default {
     name: 'ForgotPassword',
     components: {
-        blackoutFooter,
         errors,
         modal,
     },

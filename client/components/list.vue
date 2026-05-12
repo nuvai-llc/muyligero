@@ -21,7 +21,9 @@
 }
 
 #getStarted {
-    background: darken($background1, 10%);
+    background: var(--app-surface-muted);
+    color: var(--app-text);
+    border: 1px solid var(--app-border);
     display: flex;
     flex-direction: column;
     height: 220px;

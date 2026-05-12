@@ -1,4 +1,5 @@
 <style lang="scss">
+@import "../css/_globals";
 
 #libraryContainer {
     display: flex;
@@ -12,15 +13,27 @@
 }
 
 #librarySearch {
-    background: #666;
-    border: 1px solid #888;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
     color: #fff;
     margin-bottom: 15px;
-    padding: 3px 6px;
+    padding: 9px 12px;
+
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.62);
+    }
+
+    &:focus {
+        background: rgba(255, 255, 255, 0.16);
+        border-color: rgba(255, 255, 255, 0.34);
+        outline: none;
+    }
 }
 
 .lpLibraryItem {
-    border-top: 1px dotted #999;
+    border-top: 1px dotted var(--app-rule);
+    cursor: default;
     list-style: none;
     margin: 0 10px 5px;
     min-height: 43px;
@@ -38,9 +51,9 @@
     }
 
     &.gu-mirror {
-        background: #606060;
-        border: 1px solid #999;
-        color: #fff;
+        background: var(--app-panel);
+        border: 1px solid var(--app-border);
+        color: var(--app-text);
     }
 
     .lpName {
@@ -58,7 +71,7 @@
 
     .lpDescription {
         clear: both;
-        color: #ccc;
+        color: rgba(255, 255, 255, 0.72);
         display: block;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -68,8 +81,10 @@
     .lpHandle {
         height: 80px;
         left: 0;
+        opacity: 0.75;
         position: absolute;
         top: 5px;
+        visibility: visible;
     }
 
     .lpRemove {
@@ -87,8 +102,8 @@
     }
 
     #main > & {
-        background: #666;
-        color: #fff;
+        background: var(--app-panel);
+        color: var(--app-text);
         padding: 10px;
         width: 235px;
     }
@@ -97,7 +112,7 @@
 
 <template>
     <section id="libraryContainer">
-        <h2>Equipo</h2>
+        <h2>Armario</h2>
         <input id="librarySearch" v-model="searchText" type="text" placeholder="buscar articulos">
         <ul id="library">
             <li v-for="item in filteredItems" class="lpLibraryItem" :data-item-id="item.id">
@@ -174,6 +189,11 @@ export default {
     },
     watch: {
         categories() {
+            Vue.nextTick(() => {
+                this.handleItemDrag();
+            });
+        },
+        'library.defaultListId'() {
             Vue.nextTick(() => {
                 this.handleItemDrag();
             });

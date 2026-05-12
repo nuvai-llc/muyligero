@@ -24,6 +24,19 @@
     }
 }
 
+#lpLanguageSettings {
+    margin-top: 12px;
+
+    label {
+        display: block;
+    }
+
+    select {
+        margin-top: 8px;
+        width: 100%;
+    }
+}
+
 #share .lpContent {
     width: 330px;
 }
@@ -34,7 +47,7 @@
 </style>
 
 <template>
-    <span v-if="isSignedIn" id="settings" class="headerItem hasPopover">
+    <span id="settings" class="headerItem hasPopover">
         <PopoverHover>
             <span slot="target"><i class="lpSprite lpSettings" /> Ajustes</span>
             <div slot="content">
@@ -52,6 +65,17 @@
                         Moneda:
                         <input id="currencySymbol" type="text" maxlength="4" :value="library.currencySymbol" @input="updateCurrencySymbol($event)">
                     </label>
+                </div>
+                <div id="lpLanguageSettings">
+                    <hr>
+                    <label for="languageSelect">
+                        Idioma:
+                    </label>
+                    <select id="languageSelect" :value="language" @change="updateLanguage($event)">
+                        <option v-for="option in languageOptions" :key="option.value" :value="option.value">
+                            {{ option.label }}
+                        </option>
+                    </select>
                 </div>
             </div>
         </PopoverHover>
@@ -94,14 +118,21 @@ export default {
                 cssClass: 'lpShowListDescription',
                 value: false,
             }],
+            languageOptions: [
+                { value: 'es', label: 'Español' },
+                { value: 'ca', label: 'Català' },
+                { value: 'eu', label: 'Euskera' },
+                { value: 'gl', label: 'Galego' },
+                { value: 'en', label: 'English' },
+            ],
         };
     },
     computed: {
         library() {
             return this.$store.state.library;
         },
-        isSignedIn() {
-            return this.$store.state.loggedIn;
+        language() {
+            return this.$store.state.language;
         },
     },
     beforeMount() {
@@ -118,6 +149,9 @@ export default {
         },
         updateCurrencySymbol(evt) {
             this.$store.commit('updateCurrencySymbol', evt.target.value);
+        },
+        updateLanguage(evt) {
+            this.$store.commit('setLanguage', evt.target.value);
         },
         updateOptionalFieldValues() {
             let i;
