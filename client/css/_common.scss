@@ -141,6 +141,93 @@ body.theme-dark,
     }
 }
 
+body.theme-light .lpSprite,
+.lp.theme-light .lpSprite,
+body:not(.theme-dark) .lpSprite,
+.lp:not(.theme-dark) .lpSprite,
+body.theme-light .lpHandle,
+.lp.theme-light .lpHandle,
+body:not(.theme-dark) .lpHandle,
+.lp:not(.theme-dark) .lpHandle {
+    filter: brightness(0) invert(1);
+}
+
+body.theme-light .lpSpriteAdd,
+.lp.theme-light .lpSpriteAdd,
+body:not(.theme-dark) .lpSpriteAdd,
+.lp:not(.theme-dark) .lpSpriteAdd,
+body.theme-light .lpSpriteUpload,
+.lp.theme-light .lpSpriteUpload,
+body:not(.theme-dark) .lpSpriteUpload,
+.lp:not(.theme-dark) .lpSpriteUpload,
+body.theme-light .lpSpriteDownload,
+.lp.theme-light .lpSpriteDownload,
+body:not(.theme-dark) .lpSpriteDownload,
+.lp:not(.theme-dark) .lpSpriteDownload,
+body.theme-light .lpSpriteCopy,
+.lp.theme-light .lpSpriteCopy,
+body:not(.theme-dark) .lpSpriteCopy,
+.lp:not(.theme-dark) .lpSpriteCopy {
+    filter: none;
+}
+
+body.theme-light .lpItem .lpSprite,
+.lp.theme-light .lpItem .lpSprite,
+body:not(.theme-dark) .lpItem .lpSprite,
+.lp:not(.theme-dark) .lpItem .lpSprite,
+body.theme-light .lpItem .lpHandle,
+.lp.theme-light .lpItem .lpHandle,
+body:not(.theme-dark) .lpItem .lpHandle,
+.lp:not(.theme-dark) .lpItem .lpHandle {
+    filter: none;
+}
+
+body.theme-light .lpItem .lpStar.lpStar1,
+.lp.theme-light .lpItem .lpStar.lpStar1,
+body:not(.theme-dark) .lpItem .lpStar.lpStar1,
+.lp:not(.theme-dark) .lpItem .lpStar.lpStar1 {
+    filter: brightness(0) saturate(100%) invert(84%) sepia(89%) saturate(932%) hue-rotate(357deg) brightness(103%) contrast(104%);
+}
+
+body.theme-light .lpItem .lpStar.lpStar2,
+.lp.theme-light .lpItem .lpStar.lpStar2,
+body:not(.theme-dark) .lpItem .lpStar.lpStar2,
+.lp:not(.theme-dark) .lpItem .lpStar.lpStar2 {
+    filter: brightness(0) saturate(100%) invert(21%) sepia(98%) saturate(6228%) hue-rotate(356deg) brightness(97%) contrast(116%);
+}
+
+body.theme-light .lpItem .lpStar.lpStar3,
+.lp.theme-light .lpItem .lpStar.lpStar3,
+body:not(.theme-dark) .lpItem .lpStar.lpStar3,
+.lp:not(.theme-dark) .lpItem .lpStar.lpStar3 {
+    filter: brightness(0) saturate(100%) invert(57%) sepia(58%) saturate(734%) hue-rotate(66deg) brightness(93%) contrast(92%);
+}
+
+body.theme-dark .lpItem .lpCamera,
+body.theme-dark .lpItem .lpLink:not(.lpActive),
+.lp.theme-dark .lpItem .lpLink:not(.lpActive),
+body.theme-dark .lpItem .lpWorn:not(.lpActive),
+.lp.theme-dark .lpItem .lpWorn:not(.lpActive),
+body.theme-dark .lpItem .lpConsumable:not(.lpActive),
+.lp.theme-dark .lpItem .lpConsumable:not(.lpActive),
+body.theme-dark .lpItem .lpStar.lpStar0,
+.lp.theme-dark .lpItem .lpStar.lpStar0,
+body.theme-dark .lpItem .lpUp,
+.lp.theme-dark .lpItem .lpUp,
+body.theme-dark .lpItem .lpDown,
+.lp.theme-dark .lpItem .lpDown,
+body.theme-dark .lpItem .lpRemoveItem .lpSpriteRemove,
+.lp.theme-dark .lpItem .lpRemoveItem .lpSpriteRemove {
+    filter: brightness(0) invert(0.82);
+}
+
+body.theme-light .lpWeightCell .lpExpand,
+.lp.theme-light .lpWeightCell .lpExpand,
+body:not(.theme-dark) .lpWeightCell .lpExpand,
+.lp:not(.theme-dark) .lpWeightCell .lpExpand {
+    filter: brightness(0) invert(1);
+}
+
 .lpHref {
     color: var(--app-link);
     cursor: pointer;

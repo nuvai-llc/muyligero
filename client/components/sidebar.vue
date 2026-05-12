@@ -52,6 +52,7 @@ $sidebarPadding: 20px;
     .lpHref {
         color: #fff;
     }
+
 }
 
 #scrollable {

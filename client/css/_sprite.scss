@@ -99,9 +99,18 @@
     background-position: -225px 0;
     height: 14px;
     width: 14px;
-    &.lpStar1 { background-position: -225px -25px; }
-    &.lpStar2 { background-position: -225px -50px; }
-    &.lpStar3 { background-position: -225px -75px; }
+
+    &.lpStar1 {
+        filter: brightness(0) saturate(100%) invert(71%) sepia(64%) saturate(467%) hue-rotate(29deg) brightness(93%) contrast(88%);
+    }
+
+    &.lpStar2 {
+        filter: brightness(0) saturate(100%) invert(44%) sepia(79%) saturate(1092%) hue-rotate(350deg) brightness(98%) contrast(97%);
+    }
+
+    &.lpStar3 {
+        filter: brightness(0) saturate(100%) invert(67%) sepia(49%) saturate(496%) hue-rotate(58deg) brightness(92%) contrast(88%);
+    }
 }
 
 .lpConsumable {
