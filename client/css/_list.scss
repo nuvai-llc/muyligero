@@ -42,8 +42,9 @@
     }
 
     &.gu-mirror {
-        background: #f7f7f7;
-        border: 1px solid #999;
+        background: var(--app-surface);
+        border: 1px solid var(--app-border);
+        color: var(--app-text);
     }
 }
 
@@ -95,8 +96,9 @@ input.lpCategoryName { /* specificity */
     justify-content: stretch;
 
     &.gu-mirror {
-        background: #f7f7f7;
-        border: 1px solid #999;
+        background: var(--app-surface);
+        border: 1px solid var(--app-border);
+        color: var(--app-text);
     }
 
     .lpHandleCell {
