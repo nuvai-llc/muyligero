@@ -1,4 +1,5 @@
 const assignIn = require('lodash/assignIn');
+const i18n = require('./i18n');
 
 const colorUtils = require('./utils/color.js');
 const weightUtils = require('./utils/weight.js');
@@ -452,7 +453,7 @@ Library.prototype.copyList = function (id) {
 
     const copiedList = this.newList();
 
-    copiedList.name = `Copy of ${oldList.name}`;
+    copiedList.name = i18n.translate('data.copyOf', { name: oldList.name });
     for (const i in oldList.categoryIds) {
         const oldCategory = this.getCategoryById(oldList.categoryIds[i]);
         const copiedCategory = this.newCategory({ list: copiedList });

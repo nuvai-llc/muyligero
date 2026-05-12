@@ -5,18 +5,18 @@
 <template>
     <form class="lpRegister lpFields" @submit.prevent="submit">
         <div class="lpFields">
-            <input v-model="username" v-focus-on-create type="text" placeholder="Usuario" name="username">
-            <input v-model="email" type="email" placeholder="Correo electronico" name="email">
-            <input v-model="password" type="password" placeholder="Contrasena" name="password">
-            <input v-model="passwordConfirm" type="password" placeholder="Confirmar contrasena" name="passwordConfirm">
+            <input v-model="username" v-focus-on-create type="text" :placeholder="$t('forms.username')" name="username">
+            <input v-model="email" type="email" :placeholder="$t('forms.email')" name="email">
+            <input v-model="password" type="password" :placeholder="$t('forms.password')" name="password">
+            <input v-model="passwordConfirm" type="password" :placeholder="$t('forms.confirmPassword')" name="passwordConfirm">
         </div>
         <errors :errors="errors" />
         <div class="lpButtons">
             <button class="lpButton">
-                Crear cuenta
+                {{ $t('common.createAccount') }}
                 <spinner v-if="saving" />
             </button>
-            <a class="lpHref lpGetStarted" @click="loadLocal">Continuar sin registrarme</a>
+            <a class="lpHref lpGetStarted" @click="loadLocal">{{ $t('forms.continueWithoutAccount') }}</a>
         </div>
     </form>
 </template>
@@ -66,31 +66,31 @@ export default {
             this.errors = [];
 
             if (!this.username) {
-                this.errors.push({ field: 'username', message: 'Introduce un nombre de usuario.' });
+                this.errors.push({ field: 'username', message: this.$t('validation.enterUsername') });
             }
 
             if (this.username && (this.username.length < 3 || this.username.length > 32)) {
-                this.errors.push({ field: 'username', message: 'Introduce un nombre de usuario de entre 3 y 32 caracteres.' });
+                this.errors.push({ field: 'username', message: this.$t('validation.usernameLength') });
             }
 
             if (!this.email) {
-                this.errors.push({ field: 'email', message: 'Introduce un email.' });
+                this.errors.push({ field: 'email', message: this.$t('validation.enterEmail') });
             }
 
             if (!this.password) {
-                this.errors.push({ field: 'password', message: 'Introduce una contrasena.' });
+                this.errors.push({ field: 'password', message: this.$t('validation.enterPassword') });
             }
 
             if (!this.passwordConfirm) {
-                this.errors.push({ field: 'passwordConfirm', message: 'Confirma la contrasena.' });
+                this.errors.push({ field: 'passwordConfirm', message: this.$t('validation.confirmPassword') });
             }
 
             if (this.password && this.passwordConfirm && this.password !== this.passwordConfirm) {
-                this.errors.push({ field: 'password', message: 'Las contrasenas no coinciden.' });
+                this.errors.push({ field: 'password', message: this.$t('validation.passwordsMismatch') });
             }
 
             if (this.password && (this.password.length < 5 || this.password.length > 60)) {
-                this.errors.push({ field: 'password', message: 'Introduce una contrasena de entre 5 y 60 caracteres.' });
+                this.errors.push({ field: 'password', message: this.$t('validation.passwordLength') });
             }
 
             if (this.errors.length) {

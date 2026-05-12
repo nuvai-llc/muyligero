@@ -7,15 +7,15 @@
         <modal id="register" :shown="true" :blackout="true">
             <div class="lpModalHeader">
                 <h2>
-                    Register an account
+                    {{ $t('auth.registerTitle') }}
                 </h2>
                 <router-link to="/signin" class="lpHref">
-                    Already registered?
+                    {{ $t('auth.alreadyRegistered') }}
                 </router-link>
             </div>
 
             <p v-if="isLocalSaving" class="lpWarning">
-                <strong>Note:</strong> Your existing data on your computer <strong>will</strong> be saved to your new account.
+                <strong>Nota:</strong> {{ $t('auth.localDataNotice') }}
             </p>
 
             <registerForm />

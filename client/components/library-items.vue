@@ -112,8 +112,8 @@
 
 <template>
     <section id="libraryContainer">
-        <h2>Armario</h2>
-        <input id="librarySearch" v-model="searchText" type="text" placeholder="buscar articulos">
+        <h2>{{ $t('sidebar.closet') }}</h2>
+        <input id="librarySearch" v-model="searchText" type="text" :placeholder="$t('sidebar.searchItems')">
         <ul id="library">
             <li v-for="item in filteredItems" class="lpLibraryItem" :data-item-id="item.id">
                 <a v-if="item.url" :href="item.url" target="_blank" class="lpName lpHref">{{ item.name }}</a>
@@ -125,8 +125,8 @@
                 <span class="lpDescription">
                     {{ item.description }}
                 </span>
-                <a class="lpRemove lpRemoveLibraryItem speedbump" title="Eliminar este articulo para siempre" @click="removeItem(item)"><i class="lpSprite lpSpriteRemove" /></a>
-                <div v-if="!item.inCurrentList" class="lpHandle lpLibraryItemHandle" title="Arrastrar este articulo" />
+                <a class="lpRemove lpRemoveLibraryItem speedbump" :title="$t('sidebar.removeItemForever')" @click="removeItem(item)"><i class="lpSprite lpSpriteRemove" /></a>
+                <div v-if="!item.inCurrentList" class="lpHandle lpLibraryItemHandle" :title="$t('sidebar.dragItem')" />
             </li>
         </ul>
     </section>
@@ -245,7 +245,7 @@ export default {
                 this.$store.commit('removeItem', item);
             };
             const speedbumpOptions = {
-                body: 'Estas seguro de que quieres eliminar este articulo? Esta accion no se puede deshacer.',
+                body: this.$t('list.removeItemConfirm'),
             };
             bus.$emit('initSpeedbump', callback, speedbumpOptions);
         },

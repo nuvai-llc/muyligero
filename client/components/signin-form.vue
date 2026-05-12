@@ -4,20 +4,20 @@
             {{ message }}
         </p>
         <div class="lpFields">
-            <input v-model="username" v-focus-on-create type="text" placeholder="Usuario" name="username" class="username">
-            <input v-model="password" v-select-on-bus="'focus-signin-password'" type="password" placeholder="Contrasena" name="password" class="password">
+            <input v-model="username" v-focus-on-create type="text" :placeholder="$t('forms.username')" name="username" class="username">
+            <input v-model="password" v-select-on-bus="'focus-signin-password'" type="password" :placeholder="$t('forms.password')" name="password" class="password">
         </div>
 
         <errors :errors="errors" />
 
         <div class="lpButtons">
             <button class="lpButton">
-                Entrar
+                {{ $t('common.signIn') }}
                 <spinner v-if="fetching" />
             </button>
 
             <router-link to="/forgot-password" class="lpHref signin-forgot-password">
-                Has olvidado tu usuario o contrasena?
+                {{ $t('auth.forgotCredentials') }}
             </router-link>
         </div>
     </form>
@@ -47,11 +47,11 @@ export default {
             this.errors = [];
 
             if (!this.username) {
-                this.errors.push({ field: 'username', message: 'Introduce tu nombre de usuario.' });
+                this.errors.push({ field: 'username', message: this.$t('validation.enterYourUsername') });
             }
 
             if (!this.password) {
-                this.errors.push({ field: 'password', message: 'Introduce tu contrasena.' });
+                this.errors.push({ field: 'password', message: this.$t('validation.enterYourPassword') });
             }
 
             if (this.errors.length) {

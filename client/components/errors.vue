@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import i18n from '../i18n';
 
 export default {
     name: 'RegisterForm',
@@ -56,7 +57,7 @@ export default {
                 }
             }
 
-            return [{ message: 'An unknown error occurred.' }];
+            return [{ message: i18n.translate('errors.unknown', {}, this.$store && this.$store.state ? this.$store.state.language : undefined) }];
         },
     },
 };

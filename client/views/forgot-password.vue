@@ -12,14 +12,14 @@
             <div class="columns">
                 <div class="lpHalf">
                     <h3>
-                        Has olvidado tu contrasena?
+                        {{ $t('auth.forgotPasswordTitle') }}
                     </h3>
 
-                    <p>Introduce tu nombre de usuario.</p>
+                    <p>{{ $t('auth.forgotPasswordPrompt') }}</p>
                     <form class="forgotPassword" @submit.prevent="resetPassword">
                         <div class="lpFields">
-                            <input v-model="forgotPasswordUsername" type="text" placeholder="Usuario" name="username" class="username">
-                            <input type="submit" value="Enviar" class="lpButton">
+                            <input v-model="forgotPasswordUsername" type="text" :placeholder="$t('forms.username')" name="username" class="username">
+                            <input type="submit" :value="$t('common.send')" class="lpButton">
                         </div>
 
                         <errors :errors="forgotPasswordErrors" />
@@ -27,21 +27,21 @@
                 </div>
                 <div class="lpHalf">
                     <h3>
-                        Has olvidado tu usuario?
+                        {{ $t('auth.forgotUsernameTitle') }}
                     </h3>
 
-                    <p>Introduce tu direccion de email.</p>
+                    <p>{{ $t('auth.forgotUsernamePrompt') }}</p>
                     <form class="forgotUsername" @submit.prevent="forgotUsername">
                         <div class="lpFields">
-                            <input v-model="forgotUsernameEmail" type="text" placeholder="Direccion de email" name="email" class="email">
-                            <input type="submit" value="Enviar" class="lpButton">
+                            <input v-model="forgotUsernameEmail" type="text" :placeholder="$t('forms.emailAddress')" name="email" class="email">
+                            <input type="submit" :value="$t('common.send')" class="lpButton">
                         </div>
 
                         <errors :errors="forgotUsernameErrors" />
                     </form>
                 </div>
                 <router-link to="/signin" class="lpHref">
-                    &larr; Volver al inicio de sesion
+                    &larr; {{ $t('common.backToSignIn') }}
                 </router-link>
             </div>
         </modal>
@@ -82,7 +82,7 @@ export default {
                     router.push('/signin/reset-password');
                 })
                 .catch((response) => {
-                    let errors = [{ message: 'Ha ocurrido un error. Intentalo de nuevo mas tarde.' }];
+                    let errors = [{ message: this.$t('errors.genericRetry') }];
                     if (response.json && response.json.errors) {
                         errors = response.json.errors;
                     }
@@ -104,7 +104,7 @@ export default {
                     router.push('/signin/forgot-username');
                 })
                 .catch((response) => {
-                    let errors = [{ message: 'Ha ocurrido un error. Intentalo de nuevo mas tarde.' }];
+                    let errors = [{ message: this.$t('errors.genericRetry') }];
                     if (response.json && response.json.errors) {
                         errors = response.json.errors;
                     }

@@ -90,23 +90,23 @@
 <template>
     <section id="listContainer">
         <div class="listContainerHeader">
-            <h2>Listas</h2>
+            <h2>{{ $t('sidebar.lists') }}</h2>
             <PopoverHover id="addListFlyout">
-                <span slot="target"><a class="lpAdd" @click="newList"><i class="lpSprite lpSpriteAdd" />Nueva lista</a></span>
+                <span slot="target"><a class="lpAdd" @click="newList"><i class="lpSprite lpSpriteAdd" />{{ $t('sidebar.newList') }}</a></span>
                 <div slot="content">
-                    <a class="lpAdd" @click="newList"><i class="lpSprite lpSpriteAdd" />Nueva lista</a>
-                    <a class="lpAdd" @click="importCSV"><i class="lpSprite lpSpriteUpload" />Importar CSV</a>
-                    <a class="lpCopy" @click="copyList"><i class="lpSprite lpSpriteCopy" />Copiar una lista</a>
+                    <a class="lpAdd" @click="newList"><i class="lpSprite lpSpriteAdd" />{{ $t('sidebar.newList') }}</a>
+                    <a class="lpAdd" @click="importCSV"><i class="lpSprite lpSpriteUpload" />{{ $t('sidebar.importCsv') }}</a>
+                    <a class="lpCopy" @click="copyList"><i class="lpSprite lpSpriteCopy" />{{ $t('sidebar.copyList') }}</a>
                 </div>
             </PopoverHover>
         </div>
         <ul id="lists">
             <li v-for="list in library.lists" :key="list.id" class="lpLibraryList" :class="{lpActive: (library.defaultListId == list.id)}">
-                <div class="lpHandle" title="Reordenar esta lista" />
+                <div class="lpHandle" :title="$t('sidebar.reorderList')" />
                 <span class="lpLibraryListSwitch lpListName" @click="setDefaultList(list)">
                     {{ list | listName }}
                 </span>
-                <a class="lpRemove" title="Eliminar esta lista" @click="removeList(list)"><i class="lpSprite lpSpriteRemove" /></a>
+                <a class="lpRemove" :title="$t('sidebar.removeList')" @click="removeList(list)"><i class="lpSprite lpSpriteRemove" /></a>
             </li>
         </ul>
     </section>
@@ -169,7 +169,7 @@ export default {
                 this.$store.commit('removeList', list);
             };
             const speedbumpOptions = {
-                body: 'Estas seguro de que quieres eliminar esta lista? Esta accion no se puede deshacer.',
+                body: this.$t('list.removeListConfirm'),
             };
             bus.$emit('initSpeedbump', callback, speedbumpOptions);
         },

@@ -15,16 +15,16 @@
 <template>
     <div id="importCSV">
         <modal id="importValidate" :shown="shown" @hide="shown = false">
-            <h2>Confirma la importacion</h2>
+            <h2>{{ $t('importCsv.title') }}</h2>
             <div id="importData">
                 <ul class="lpTable lpDataTable">
                     <li class="lpRow lpHeader">
-                        <span class="lpCell">Articulo</span>
-                        <span class="lpCell">Categoria</span>
-                        <span class="lpCell">Descripcion</span>
-                        <span class="lpCell">Cant.</span>
-                        <span class="lpCell">Peso</span>
-                        <span class="lpCell">Unidad</span>
+                        <span class="lpCell">{{ $t('importCsv.item') }}</span>
+                        <span class="lpCell">{{ $t('importCsv.category') }}</span>
+                        <span class="lpCell">{{ $t('importCsv.description') }}</span>
+                        <span class="lpCell">{{ $t('importCsv.qty') }}</span>
+                        <span class="lpCell">{{ $t('importCsv.weight') }}</span>
+                        <span class="lpCell">{{ $t('importCsv.unit') }}</span>
                     </li>
                     <li v-for="row in importData.data" class="lpRow">
                         <span class="lpCell">{{ row.name }}</span>
@@ -36,8 +36,8 @@
                     </li>
                 </ul>
             </div>
-            <a id="importConfirm" class="lpButton" @click="importList">Importar lista</a>
-            <a class="lpButton close" @click="shown = false">Cancelar importacion</a>
+            <a id="importConfirm" class="lpButton" @click="importList">{{ $t('importCsv.importList') }}</a>
+            <a class="lpButton close" @click="shown = false">{{ $t('importCsv.cancelImport') }}</a>
         </modal>
         <form id="csvUpload">
             <input id="csv" type="file" name="csv">
@@ -88,11 +88,11 @@ export default {
                 return;
             }
             if (file.size > 1000000) {
-                alert('El archivo es demasiado grande');
+                alert(this.$t('importCsv.tooLarge'));
                 return;
             }
             if (name.substring(name.length - 4).toLowerCase() != '.csv') {
-                alert('Selecciona un archivo CSV.');
+                alert(this.$t('importCsv.selectCsv'));
                 return;
             }
             const reader = new FileReader();
@@ -157,7 +157,7 @@ export default {
             }
 
             if (!this.importData.data.length) {
-                alert('No se ha podido cargar la hoja. Revisa el formato.');
+                alert(this.$t('importCsv.invalidFormat'));
             } else {
                 this.shown = true;
             }

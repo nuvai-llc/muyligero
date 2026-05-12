@@ -4,28 +4,28 @@
 
 <template>
     <modal id="accountSettings" :shown="shown" @hide="shown = false">
-        <h2>Ajustes de cuenta</h2>
+        <h2>{{ $t('account.title') }}</h2>
 
         <form id="accountForm" @submit.prevent="updateAccount()">
             <div class="lpFields">
                 <input type="text" name="username" class="username" disabled :value="username">
-                <input v-model="currentPassword" type="password" placeholder="Contrasena actual" name="currentPassword" class="currentPassword">
+                <input v-model="currentPassword" type="password" :placeholder="$t('forms.currentPassword')" name="currentPassword" class="currentPassword">
                 <hr>
-                <input v-model="newEmail" type="email" placeholder="Nuevo email" name="newEmail" class="newEmail">
+                <input v-model="newEmail" type="email" :placeholder="$t('forms.newEmail')" name="newEmail" class="newEmail">
                 <hr>
-                <input v-model="newPassword" type="password" placeholder="Nueva contrasena" name="newPassword" class="newPassword">
-                <input v-model="confirmNewPassword" type="password" placeholder="Confirmar nueva contrasena" name="confirmNewPassword" class="confirmNewPassword">
+                <input v-model="newPassword" type="password" :placeholder="$t('forms.newPassword')" name="newPassword" class="newPassword">
+                <input v-model="confirmNewPassword" type="password" :placeholder="$t('forms.confirmNewPassword')" name="confirmNewPassword" class="confirmNewPassword">
             </div>
 
             <errors :errors="errors" />
 
             <div class="lpButtons">
                 <button class="lpButton">
-                    Guardar
+                    {{ $t('common.save') }}
                     <spinner v-if="saving" />
                 </button>
-                <a class="lpHref" @click="shown = false">Cancelar</a>
-                <a class="lpHref" @click="showDeleteAccount">Eliminar cuenta</a>
+                <a class="lpHref" @click="shown = false">{{ $t('common.cancel') }}</a>
+                <a class="lpHref" @click="showDeleteAccount">{{ $t('account.deleteAccount') }}</a>
             </div>
         </form>
     </modal>
@@ -72,15 +72,15 @@ export default {
             this.errors = [];
 
             if (!this.currentPassword) {
-                this.errors.push({ field: 'currentPassword', message: 'Introduce tu contrasena actual.' });
+                this.errors.push({ field: 'currentPassword', message: this.$t('validation.enterCurrentPassword') });
             }
 
             if (this.newPassword && this.newPassword != this.confirmNewPassword) {
-                this.errors.push({ field: 'newPassword', message: 'Las contrasenas no coinciden.' });
+                this.errors.push({ field: 'newPassword', message: this.$t('validation.passwordsMismatch') });
             }
 
             if (this.newPassword && (this.newPassword.length < 5 || this.newPassword.length > 60)) {
-                this.errors.push({ field: 'newPassword', message: 'Introduce una contrasena de entre 5 y 60 caracteres.' });
+                this.errors.push({ field: 'newPassword', message: this.$t('validation.passwordLength') });
             }
 
             if (this.errors.length) {

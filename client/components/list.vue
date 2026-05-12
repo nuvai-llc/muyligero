@@ -15,8 +15,23 @@
     }
 
     textarea {
+        background: var(--app-surface);
+        border: 1px solid var(--app-border);
+        color: var(--app-text);
         height: 65px;
+        padding: $spacingSmall;
         width: 100%;
+
+        &:hover {
+            background: var(--app-surface);
+            border-color: var(--app-border);
+        }
+
+        &:focus {
+            background: var(--app-surface);
+            border-color: var(--app-button-start);
+            outline: none;
+        }
     }
 }
 
@@ -52,17 +67,17 @@
 <template>
     <div class="lpListBody">
         <div v-if="isListNew" id="getStarted">
-            <h2>Bienvenido a MuyLigero.</h2>
-            <p>Esto es lo que necesitas para empezar:</p>
+            <h2>{{ $t('list.welcomeTitle', { appName: $t('common.appName') }) }}</h2>
+            <p>{{ $t('list.welcomeIntro') }}</p>
             <ol>
-                <li>Haz clic en los elementos para editarlos. Pon nombre a tu lista y a cada categoria.</li>
-                <li>Anade categorias nuevas y asigna peso a los articulos para empezar a ver el resumen.</li>
+                <li>{{ $t('list.step1') }}</li>
+                <li>{{ $t('list.step2') }}</li>
                 <li v-if="!isLocalSaving">
-                    Cuando termines, comparte tu lista con otras personas.
+                    {{ $t('list.step3') }}
                 </li>
             </ol>
             <p v-if="isLocalSaving" class="lpWarning">
-                <strong>Nota:</strong> Tus datos se estan guardando en tu ordenador. Para compartir tus listas, crea una cuenta.
+                <strong>Nota:</strong> {{ $t('list.localNotice') }}
             </p>
         </div>
         <list-summary v-if="!isListNew" :list="list" />
@@ -71,7 +86,7 @@
         <div style="clear: both;" />
 
         <div v-if="library.optionalFields['listDescription']" id="listDescriptionContainer">
-            <h3>Descripcion de la lista</h3> <p>(<a href="https://guides.github.com/features/mastering-markdown/" target="_blank" class="lpHref">Markdown</a> compatible)</p>
+            <h3>{{ $t('list.description') }}</h3> <p>(<a href="https://guides.github.com/features/mastering-markdown/" target="_blank" class="lpHref">Markdown</a> {{ $t('list.markdownCompatible') }})</p>
             <textarea id="listDescription" v-model="list.description" @input="updateListDescription" />
         </div>
 
@@ -81,7 +96,7 @@
 
         <hr>
 
-        <a class="lpAdd addCategory" @click="newCategory"><i class="lpSprite lpSpriteAdd" />Nueva categoria</a>
+        <a class="lpAdd addCategory" @click="newCategory"><i class="lpSprite lpSpriteAdd" />{{ $t('list.addCategory') }}</a>
     </div>
 </template>
 

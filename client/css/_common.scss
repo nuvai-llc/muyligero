@@ -22,6 +22,9 @@ body:not(.theme-dark),
     --app-panel: #606060;
     --app-panel-dark: #555555;
     --app-overlay: rgba(0, 0, 0, 0.5);
+    --app-scrollbar-track: rgba(125, 125, 125, 0.14);
+    --app-scrollbar-thumb: rgba(104, 120, 67, 0.72);
+    --app-scrollbar-thumb-hover: rgba(104, 120, 67, 0.9);
 }
 
 body.theme-dark,
@@ -44,6 +47,9 @@ body.theme-dark,
     --app-panel: #343431;
     --app-panel-dark: #2a2a28;
     --app-overlay: rgba(0, 0, 0, 0.84);
+    --app-scrollbar-track: rgba(255, 255, 255, 0.08);
+    --app-scrollbar-thumb: rgba(183, 194, 147, 0.45);
+    --app-scrollbar-thumb-hover: rgba(208, 219, 171, 0.68);
 }
 
 .lp {
@@ -101,6 +107,37 @@ body.theme-dark,
     *::before,
     *::after {
         box-sizing: inherit;
+    }
+
+    * {
+        scrollbar-color: var(--app-scrollbar-thumb) var(--app-scrollbar-track);
+        scrollbar-width: thin;
+    }
+
+    *::-webkit-scrollbar {
+        height: 10px;
+        width: 10px;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: var(--app-scrollbar-track);
+        border-radius: 999px;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background: var(--app-scrollbar-thumb);
+        border: 2px solid transparent;
+        border-radius: 999px;
+        background-clip: padding-box;
+    }
+
+    *::-webkit-scrollbar-thumb:hover {
+        background: var(--app-scrollbar-thumb-hover);
+        background-clip: padding-box;
+    }
+
+    *::-webkit-scrollbar-corner {
+        background: transparent;
     }
 }
 
@@ -221,6 +258,7 @@ body.theme-dark,
     input[type=text],
     input[type=email],
     input[type=password],
+    select,
     textarea {
         background: var(--app-surface);
         border: 1px solid var(--app-border);
@@ -229,7 +267,13 @@ body.theme-dark,
         padding: $spacingSmall;
         width: 100%;
 
+        &:hover {
+            background: var(--app-surface);
+            border-color: var(--app-border);
+        }
+
         &:focus {
+            background: var(--app-surface);
             border-color: var(--app-button-start);
             outline: none;
         }

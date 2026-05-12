@@ -7,11 +7,11 @@
 <template>
     <span class="headerItem hasPopover">
         <PopoverHover id="headerPopover">
-            <span slot="target">Sesion iniciada como <span class="username">{{ username }}</span> <i class="lpSprite lpExpand" /></span>
+            <span slot="target">{{ $t('account.signedInAs', { username }) }} <i class="lpSprite lpExpand" /></span>
             <div slot="content">
-                <a class="lpHref accountSettings" @click="showAccount">Ajustes de cuenta</a><br>
-                <a class="lpHref" @click="showHelp">Ayuda</a><br>
-                <a class="lpHref signout" @click="signout">Cerrar sesion</a>
+                <a class="lpHref accountSettings" @click="showAccount">{{ $t('common.accountSettings') }}</a><br>
+                <a class="lpHref" @click="showHelp">{{ $t('common.help') }}</a><br>
+                <a class="lpHref signout" @click="signout">{{ $t('common.signOut') }}</a>
             </div>
         </PopoverHover>
     </span>

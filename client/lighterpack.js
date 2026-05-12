@@ -5,6 +5,7 @@ import VueRouter from 'vue-router';
 
 import routes from './routes';
 import store from './store/store';
+import i18n from './i18n';
 
 const focusDirectives = require('./utils/focus.js');
 const dataTypes = require('./dataTypes.js');
@@ -15,6 +16,7 @@ const List = dataTypes.List;
 const Library = dataTypes.Library;
 
 Vue.use(VueRouter);
+i18n.installI18n(Vue);
 
 const utils = require('./utils/utils.js');
 
@@ -31,8 +33,7 @@ const applyTheme = function (theme) {
 };
 
 const applyLanguage = function (language) {
-    const allowedLanguages = ['es', 'ca', 'eu', 'gl', 'en'];
-    const normalizedLanguage = allowedLanguages.indexOf(language) > -1 ? language : 'es';
+    const normalizedLanguage = i18n.setLanguage(language);
     document.documentElement.lang = normalizedLanguage;
     localStorage.uiLanguage = normalizedLanguage;
 };

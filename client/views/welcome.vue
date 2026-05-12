@@ -17,10 +17,6 @@ $welcomeVerticalSpacing: 80px;
         font-weight: normal;
         margin: 0 0 $welcomeVerticalSpacing;
         text-align: center;
-
-        strong {
-            font-size: 36px;
-        }
     }
 
     .lpError {
@@ -108,37 +104,39 @@ $welcomeVerticalSpacing: 80px;
     <div id="lpWelcomeContainer">
         <div id="lpLaunchBanner">
             <div class="lpContainer">
-                <strong>Bienvenido a la nueva versión de MuyLigero.</strong> Esperamos que te guste, y si tienes cualquier duda puedes <a href="mailto:info@lighterpack.com" class="lpHref">ponerte en contacto</a>.
+                <strong>{{ $t('welcome.bannerTitle', { appName: $t('common.appName') }) }}</strong>
+                {{ $t('welcome.bannerBodyPrefix') }}
+                <a href="mailto:info@lighterpack.com" class="lpHref">{{ $t('welcome.bannerContactLink') }}</a>.
             </div>
         </div>
         <div id="lpWelcome" class="lpContainer">
-            <h1><strong>MuyLigero</strong> te ayuda a llevar el control del equipo que llevas en tus aventuras.</h1>
+            <h1>{{ $t('welcome.hero', { appName: $t('common.appName') }) }}</h1>
             <div class="lpWelcomeContent">
                 <div class="lpWelcomeRegisterContainer">
                     <div class="lpWelcomeRegister">
                         <h3 class="lpWelcomeContainerHeader">
-                            Crear una cuenta
+                            {{ $t('welcome.createAccount') }}
                         </h3>
                         <registerForm />
                     </div>
                     <div class="lpValuePropContainer">
                         <ul id="lpValueProp">
                             <li id="valueEnter">
-                                <h3><strong>1.</strong>Introduce tus listas de equipaje</h3>
+                                <h3><strong>1.</strong>{{ $t('welcome.value1') }}</h3>
                             </li>
                             <li id="valueVisualize">
-                                <h3><strong>2.</strong>Visualiza el peso de tu mochila</h3>
+                                <h3><strong>2.</strong>{{ $t('welcome.value2') }}</h3>
                             </li>
                             <li id="valueShare">
-                                <h3><strong>3.</strong>Comparte tus listas con otras personas</h3>
+                                <h3><strong>3.</strong>{{ $t('welcome.value3') }}</h3>
                             </li>
                         </ul>
-                        <img id="lpWelcomeScreenshot" src="/images/screenshot.jpg" alt="Captura de la interfaz de MuyLigero">
+                        <img id="lpWelcomeScreenshot" src="/images/screenshot.jpg" :alt="$t('welcome.screenshotAlt', { appName: $t('common.appName') })">
                     </div>
                 </div>
                 <div class="lpWelcomeSigninContainer">
                     <h3 class="lpWelcomeContainerHeader">
-                        Iniciar sesión
+                        {{ $t('welcome.signIn') }}
                     </h3>
                     <SigninForm />
                 </div>

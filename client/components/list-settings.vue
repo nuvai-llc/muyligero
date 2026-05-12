@@ -18,9 +18,23 @@
 
 #lpPriceSettings {
     input {
+        background: var(--app-surface);
+        border: 1px solid var(--app-border);
+        color: var(--app-text);
         display: inline-block;
         margin-left: 10px;
         width: 50px;
+
+        &:hover {
+            background: var(--app-surface);
+            border-color: var(--app-border);
+        }
+
+        &:focus {
+            background: var(--app-surface);
+            border-color: var(--app-button-start);
+            outline: none;
+        }
     }
 }
 
@@ -32,8 +46,22 @@
     }
 
     select {
+        background: var(--app-surface);
+        border: 1px solid var(--app-border);
+        color: var(--app-text);
         margin-top: 8px;
         width: 100%;
+
+        &:hover {
+            background: var(--app-surface);
+            border-color: var(--app-border);
+        }
+
+        &:focus {
+            background: var(--app-surface);
+            border-color: var(--app-button-start);
+            outline: none;
+        }
     }
 }
 
@@ -49,27 +77,27 @@
 <template>
     <span id="settings" class="headerItem hasPopover">
         <PopoverHover>
-            <span slot="target"><i class="lpSprite lpSettings" /> Ajustes</span>
+            <span slot="target"><i class="lpSprite lpSettings" /> {{ $t('common.settings') }}</span>
             <div slot="content">
                 <ul id="lpOptionalFields">
                     <li v-for="optionalField in optionalFieldsLookup" :key="optionalField.name" class="lpOptionalField">
                         <label>
                             <input v-model="optionalField.value" type="checkbox" @change="toggleOptionalField($event, optionalField.name)">
-                            {{ optionalField.displayName }}
+                            {{ $t(optionalField.displayKey) }}
                         </label>
                     </li>
                 </ul>
                 <div v-if="library.optionalFields['price']" id="lpPriceSettings">
                     <hr>
                     <label>
-                        Moneda:
+                        {{ $t('common.currency') }}:
                         <input id="currencySymbol" type="text" maxlength="4" :value="library.currencySymbol" @input="updateCurrencySymbol($event)">
                     </label>
                 </div>
                 <div id="lpLanguageSettings">
                     <hr>
                     <label for="languageSelect">
-                        Idioma:
+                        {{ $t('common.language') }}:
                     </label>
                     <select id="languageSelect" :value="language" @change="updateLanguage($event)">
                         <option v-for="option in languageOptions" :key="option.value" :value="option.value">
@@ -84,6 +112,7 @@
 
 <script>
 import PopoverHover from './popover-hover.vue';
+import i18n from '../i18n';
 
 export default {
     name: 'ListSettings',
@@ -94,37 +123,31 @@ export default {
         return {
             optionalFieldsLookup: [{
                 name: 'images',
-                displayName: 'Imagenes de articulos',
+                displayKey: 'settings.images',
                 cssClass: 'lpShowImages',
                 value: false,
             }, {
                 name: 'price',
-                displayName: 'Precios de articulos',
+                displayKey: 'settings.prices',
                 cssClass: 'lpShowPrices',
                 value: false,
             }, {
                 name: 'worn',
-                displayName: 'Articulos puestos',
+                displayKey: 'settings.worn',
                 cssClass: 'lpShowWorn',
                 value: false,
             }, {
                 name: 'consumable',
-                displayName: 'Articulos consumibles',
+                displayKey: 'settings.consumable',
                 cssClass: 'lpShowConsumable',
                 value: false,
             }, {
                 name: 'listDescription',
-                displayName: 'Descripciones de listas',
+                displayKey: 'settings.listDescription',
                 cssClass: 'lpShowListDescription',
                 value: false,
             }],
-            languageOptions: [
-                { value: 'es', label: 'Español' },
-                { value: 'ca', label: 'Català' },
-                { value: 'eu', label: 'Euskera' },
-                { value: 'gl', label: 'Galego' },
-                { value: 'en', label: 'English' },
-            ],
+            languageOptions: i18n.languageOptions,
         };
     },
     computed: {

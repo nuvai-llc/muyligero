@@ -15,18 +15,18 @@
         <ul class="lpItems lpDataTable">
             <li class="lpHeader lpItemsHeader">
                 <span class="lpHandleCell">
-                    <div class="lpHandle lpCategoryHandle" title="Reordenar esta categoria" />
+                    <div class="lpHandle lpCategoryHandle" :title="$t('list.reorderCategory')" />
                 </span>
-                <input v-focus-on-create="category._isNew" type="text" :value="category.name" placeholder="Nombre de la categoria" class="lpCategoryName lpSilent" @input="updateCategoryName">
-                <span v-if="library.optionalFields['price']" class="lpPriceCell">Precio</span>
-                <span class="lpWeightCell">Peso</span>
-                <span class="lpQtyCell">cant.</span>
-                <span class="lpRemoveCell"><a class="lpRemove lpRemoveCategory" title="Eliminar esta categoria" @click="removeCategory(category)"><i class="lpSprite lpSpriteRemove" /></a></span>
+                <input v-focus-on-create="category._isNew" type="text" :value="category.name" :placeholder="$t('list.categoryNamePlaceholder')" class="lpCategoryName lpSilent" @input="updateCategoryName">
+                <span v-if="library.optionalFields['price']" class="lpPriceCell">{{ $t('summary.price') }}</span>
+                <span class="lpWeightCell">{{ $t('summary.weight') }}</span>
+                <span class="lpQtyCell">{{ $t('summary.qty') }}</span>
+                <span class="lpRemoveCell"><a class="lpRemove lpRemoveCategory" :title="$t('list.removeCategory')" @click="removeCategory(category)"><i class="lpSprite lpSpriteRemove" /></a></span>
             </li>
             <item v-for="itemContainer in itemContainers" :key="itemContainer.item.id" :item-container="itemContainer" :category="category" />
             <li class="lpFooter lpItemsFooter">
                 <span class="lpAddItemCell">
-                    <a class="lpAdd lpAddItem" @click="newItem"><i class="lpSprite lpSpriteAdd" />Nuevo articulo</a>
+                    <a class="lpAdd lpAddItem" @click="newItem"><i class="lpSprite lpSpriteAdd" />{{ $t('list.newItem') }}</a>
                 </span>
                 <span v-if="library.optionalFields['price']" class="lpPriceCell lpNumber lpSubtotal">
                     {{ category.subtotalPrice | displayPrice(library.currencySymbol) }}
@@ -76,7 +76,7 @@ export default {
                 this.$store.commit('removeCategory', category);
             };
             const speedbumpOptions = {
-                body: 'Estas seguro de que quieres eliminar esta categoria? Esta accion no se puede deshacer.',
+                body: this.$t('list.removeCategoryConfirm'),
             };
             bus.$emit('initSpeedbump', callback, speedbumpOptions);
         },

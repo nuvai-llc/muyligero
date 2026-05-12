@@ -3,7 +3,7 @@
 .lpItem {
     &:hover,
     &.ui-sortable-helper {
-        background: #fff;
+        background: var(--app-surface);
 
         .lpRemove,
         .lpWorn,

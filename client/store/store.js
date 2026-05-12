@@ -1,6 +1,7 @@
 import Vuex from 'vuex';
 import Vue from 'vue';
 import debounce from 'lodash/debounce';
+import i18n from '../i18n';
 
 const weightUtils = require('../utils/weight.js');
 const dataTypes = require('../dataTypes.js');
@@ -57,8 +58,8 @@ const store = new Vuex.Store({
             state.theme = theme === 'dark' ? 'dark' : 'light';
         },
         setLanguage(state, language) {
-            const allowedLanguages = ['es', 'ca', 'eu', 'gl', 'en'];
-            state.language = allowedLanguages.indexOf(language) > -1 ? language : 'es';
+            state.language = i18n.ALLOWED_LANGUAGES.indexOf(language) > -1 ? language : i18n.DEFAULT_LANGUAGE;
+            i18n.setLanguage(state.language);
         },
         loadLibraryData(state, libraryData) {
             const library = new Library();
@@ -67,7 +68,7 @@ const store = new Vuex.Store({
                 library.load(libraryData);
                 state.library = library;
             } catch (err) {
-                state.globalAlerts.push({ message: 'An error occurred while loading your data.' });
+                state.globalAlerts.push({ message: i18n.translate('errors.loadData') });
             }
             state.lastSaveData = JSON.stringify(library.save());
         },
@@ -296,7 +297,7 @@ const store = new Vuex.Store({
                         bus.$emit('unauthorized');
                     } else {
                         return new Promise((resolve, reject) => {
-                            reject('An error occurred while fetching your data, please try again later.');
+                            reject(i18n.translate('errors.fetchData'));
                         });
                     }
                 });
@@ -355,7 +356,7 @@ const store = new Vuex.Store({
                         })
                         .catch((response) => {
                             store.commit('setIsSaving', false);
-                            let error = 'An error occurred while attempting to save your data.';
+                            let error = i18n.translate('errors.saveData');
                             if (response.json && response.json.status) {
                                 error = response.json.status;
                             }

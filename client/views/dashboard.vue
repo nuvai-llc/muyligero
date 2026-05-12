@@ -74,15 +74,15 @@
                 <span class="headerItem">
                     <a id="hamburger" class="lpTransition" @click="toggleSidebar"><i class="lpSprite lpHamburger" /></a>
                 </span>
-                <input id="lpListName" :value="list.name" type="text" class="lpListName lpSilent headerItem" value="Nueva lista" placeholder="Nombre de la lista" autocomplete="off" name="lastpass-disable-search" @input="updateListName">
+                <input id="lpListName" :value="list.name" type="text" class="lpListName lpSilent headerItem" :placeholder="$t('dashboard.listNamePlaceholder')" autocomplete="off" name="lastpass-disable-search" @input="updateListName">
                 <share />
                 <themeToggle />
                 <listSettings />
                 <accountDropdown v-if="isSignedIn" />
                 <span v-else class="headerItem signInRegisterButtons">
-                    <router-link to="/register" class="lpButton lpSmall">Crear cuenta</router-link>
+                    <router-link to="/register" class="lpButton lpSmall">{{ $t('common.createAccount') }}</router-link>
                     o
-                    <router-link to="/signin" class="lpButton lpSmall">Entrar</router-link>
+                    <router-link to="/signin" class="lpButton lpSmall">{{ $t('common.signIn') }}</router-link>
                 </span>
                 <span class="clearfix" />
             </div>

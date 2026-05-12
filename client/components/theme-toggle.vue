@@ -49,7 +49,7 @@
 <template>
     <span class="headerItem">
         <span class="lpThemeToggle" :class="{ 'is-dark': isDark }" @click="toggleTheme">
-            <span class="lpThemeLabel">{{ isDark ? 'Dark' : 'Light' }}</span>
+            <span class="lpThemeLabel">{{ isDark ? $t('theme.dark') : $t('theme.light') }}</span>
             <span class="lpThemeTrack">
                 <span class="lpThemeThumb" />
             </span>
